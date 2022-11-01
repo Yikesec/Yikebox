@@ -38,8 +38,8 @@ Welcome to the Yikesec Yikebox page.
 
 
 
-```Bat
-  npm run deploy
+```bash
+  python Yikebox.py
 ```
 
 
