@@ -43,7 +43,7 @@ def choose_lang(language):
 
         if choice == '0':
             exit()
-        elif choice == '1':
+        elif choice == 'femboysexxZmVtYm95c2V4eFptVnQ':
             clear()
             Yikebox_banner(english)
             home_page(english)
