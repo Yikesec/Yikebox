@@ -212,9 +212,11 @@ class english:
 
     language_list = Color.green+"""         (Languages) """+Color.white+"""
 +--------------------------------+
-|           LANGUAGES            |
+|             Verify             |
 +--------------------------------+           
-|         [1] English            | 
+|      Please enter the key      | 
+|        To use this tool        |
+|                        o(0ω0)o | 
 +--------------------------------+"""                
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
