@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-from languages import english, Color
+from titles import english, Color
 
-def Yikebox_banner(language):
+def Yikebox_banner(titles):
     print(Color.white+"""
 
 ########################################################################
@@ -24,9 +24,9 @@ def Yikebox_banner(language):
 #                                                                      #
 ########################################################################
 """)
-    sticks = len(language.Yikebox_description) * '-'
+    sticks = len(titles.Yikebox_description) * '-'
     print(sticks)
-    print(language.Yikebox_description)
+    print(titles.Yikebox_description)
     print(sticks)
 # Made by Sakura 95, dont fucking skid this
 
@@ -35,7 +35,7 @@ def Yikebox_banner(language):
 
 # also for clarity angelsec is on a fucking hitlist, im developing this both for fun
 # and for offencive uses, fuck angelsex
-def billcipher_banner(language):
+def billcipher_banner(titles):
     print(Color.yellow+"""
 ######                   #####                                
 #     # # #      #      #     # # #####  #    # ###### #####  
@@ -44,13 +44,13 @@ def billcipher_banner(language):
 #     # # #      #      #       # #####  #    # #      #####  
 #     # # #      #      #     # # #      #    # #      #   #  
 ######  # ###### ######  #####  # #      #    # ###### #    #"""+Color.white)
-    sticks = len(language.billcipher_description) * '-'
+    sticks = len(titles.billcipher_description) * '-'
     print(sticks)
-    print(language.billcipher_description)
+    print(titles.billcipher_description)
     print(sticks,'\n')
 
 
-def leaked_banner(language):
+def leaked_banner(titles):
     print(Color.yellow+"""
  ___       _______   ________  ___  __    _______   ________  ________      
 |\  \     |\  ___ \ |\   __  \|\  \|\  \ |\  ___ \ |\   ___ \|\_____  \     
@@ -60,13 +60,13 @@ def leaked_banner(language):
    \ \_______\ \_______\ \__\ \__\ \__\\ \__\ \_______\ \_______\       ___ 
     \|_______|\|_______|\|__|\|__|\|__| \|__|\|_______|\|_______|      |\__\\"""+Color.white)
 
-    sticks = len(language.leaked_description) * '-'
+    sticks = len(titles.leaked_description) * '-'
     print(sticks)
-    print(language.leaked_description)
+    print(titles.leaked_description)
     print(sticks,'\n')
 
 
-def devploit_banner(language):
+def devploit_banner(titles):
     print(Color.white+"""
     ______                 _       _ _   
     |  _  \               | |     (_) |  
@@ -77,13 +77,13 @@ def devploit_banner(language):
                     | |
                     |_|""")
 
-    sticks = len(language.devploit_description) * '-'
+    sticks = len(titles.devploit_description) * '-'
     print(sticks)
-    print(language.devploit_description)
+    print(titles.devploit_description)
     print(sticks,'\n')
 
 
-def gorecon_banner(language):
+def gorecon_banner(titles):
     print(Color.red+"""
 ██████╗  ██████╗ ██████╗ ███████╗ ██████╗ ██████╗ ███╗   ██╗
 ██╔════╝ ██╔═══██╗██╔══██╗██╔════╝██╔════╝██╔═══██╗████╗  ██║
@@ -92,13 +92,13 @@ def gorecon_banner(language):
 ╚██████╔╝╚██████╔╝██║  ██║███████╗╚██████╗╚██████╔╝██║ ╚████║
  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝"""+Color.white)
 
-    sticks = len(language.gorecon_description) * '-'
+    sticks = len(titles.gorecon_description) * '-'
     print(sticks)
-    print(language.gorecon_description)
+    print(titles.gorecon_description)
     print(sticks,'\n')
 
 
-def dracnmap_banner(language):
+def dracnmap_banner(titles):
     print(Color.green+"""
 ________                                                    
 \______ \____________    ____   ____   _____ _____  ______  
@@ -106,13 +106,13 @@ ________
  |    `   \  | \// __ \\\  \___|   |  \  Y Y  \/ __ \|  |_> >
 /_______  /__|  (____  /\___  >___|  /__|_|  (____  /   __/ 
         \/           \/     \/     \/      \/     \/|__|"""+Color.white)
-    sticks = len(language.dracnmap_description) * '-'
+    sticks = len(titles.dracnmap_description) * '-'
     print(sticks)
-    print(language.dracnmap_description)
+    print(titles.dracnmap_description)
     print(sticks,'\n')
 
 
-def nmap_banner(language):
+def nmap_banner(titles):
     print(Color.white+"""    
     _   __
    / | / /___ ___  ____ _____ 
@@ -120,36 +120,36 @@ def nmap_banner(language):
  / /|  / / / / / / /_/ / /_/ /
 /_/ |_/_/ /_/ /_/\__,_/ .___/ 
                      /_/""")
-    sticks = len(language.nmap_description) * '-'
+    sticks = len(titles.nmap_description) * '-'
     print(sticks)
-    print(language.nmap_description)
+    print(titles.nmap_description)
     print(sticks,'\n')
 
-def sublist3r_banner(language):
+def sublist3r_banner(titles):
     print(Color.red+"""     
      ____        _     _ _     _   _____
     / ___| _   _| |__ | (_)___| |_|___ / _ __
     \___ \| | | | '_ \| | / __| __| |_ \| '__|
      ___) | |_| | |_) | | \__ \ |_ ___) | |
     |____/ \__,_|_.__/|_|_|___/\__|____/|_|"""+Color.white)
-    sticks = len(language.sublist3r_description) * '-'
+    sticks = len(titles.sublist3r_description) * '-'
     print(sticks)
-    print(language.sublist3r_description)
+    print(titles.sublist3r_description)
     print(sticks,'\n')
 
-def sslscan_banner(language):
+def sslscan_banner(titles):
     print(Color.white+"""
          _
  ___ ___| |___  ___ __ _ _ __
 / __/ __| / __|/ __/ _` | '_ \ 
 \__ \__ \ \__ \ (_| (_| | | | |
 |___/___/_|___/\___\__,_|_| |_|""")
-    sticks = len(language.sslscan_description) * '-'
+    sticks = len(titles.sslscan_description) * '-'
     print(sticks)
-    print(language.sslscan_description)
+    print(titles.sslscan_description)
     print(sticks,'\n')
 
-def dnsmaper_banner(language):
+def dnsmaper_banner(titles):
     print(Color.white+""" 
  ____  _   _ ____  __  __
 |  _ \| \ | / ___||  \/  | __ _ _ __   ___ _ __
@@ -157,12 +157,12 @@ def dnsmaper_banner(language):
 | |_| | |\  |___) | |  | | (_| | |_) |  __/ |
 |____/|_| \_|____/|_|  |_|\__,_| .__/ \___|_|
                                |_|""")
-    sticks = len(language.dnsmaper_description) * '-'
+    sticks = len(titles.dnsmaper_description) * '-'
     print(sticks)
-    print(language.dnsmaper_description)
+    print(titles.dnsmaper_description)
     print(sticks,'\n')
 
-def a2sv_banner(language):
+def a2sv_banner(titles):
     print(Color.white+"""                                
  █████╗ ██████╗ ███████╗██╗   ██╗   A_A
 ██╔══██╗╚════██╗██╔════╝██║   ██║  (-.-)
@@ -170,12 +170,12 @@ def a2sv_banner(language):
 ██╔══██║██╔═══╝ ╚════██║╚██╗ ██╔╝ |     |   __
 ██║  ██║███████╗███████║ ╚████╔╝  |  || |  |  t__  
 ╚═╝  ╚═╝╚══════╝╚══════╝  ╚═══╝    t_|| /_/""")
-    sticks = len(language.a2sv_description) * '-'
+    sticks = len(titles.a2sv_description) * '-'
     print(sticks)
-    print(language.a2sv_description)
+    print(titles.a2sv_description)
     print(sticks,'\n')
 
-def shondanhat_banner(language):
+def shondanhat_banner(titles):
     print(Color.green+"""
 ███████╗██╗  ██╗ ██████╗ ██████╗  █████╗ ███╗   ██╗██╗  ██╗ █████╗ ████████╗
 ██╔════╝██║  ██║██╔═══██╗██╔══██╗██╔══██╗████╗  ██║██║  ██║██╔══██╗╚══██╔══╝
@@ -183,12 +183,12 @@ def shondanhat_banner(language):
 ╚════██║██╔══██║██║   ██║██║  ██║██╔══██║██║╚██╗██║██╔══██║██╔══██║   ██║   
 ███████║██║  ██║╚██████╔╝██████╔╝██║  ██║██║ ╚████║██║  ██║██║  ██║   ██║   
 ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝"""+Color.white)
-    sticks = len(language.shodanhat_description) * '-'
+    sticks = len(titles.shodanhat_description) * '-'
     print(sticks)
-    print(language.shodanhat_description)
+    print(titles.shodanhat_description)
     print(sticks,'\n')
 
-def hatcloud_banner(language):
+def hatcloud_banner(titles):
     print(Color.white+"""
 ██╗  ██╗ █████╗ ████████╗     ██████╗██╗      ██████╗ ██╗   ██╗██████╗ 
 ██║  ██║██╔══██╗╚══██╔══╝    ██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗
@@ -196,12 +196,12 @@ def hatcloud_banner(language):
 ██╔══██║██╔══██║   ██║       ██║     ██║     ██║   ██║██║   ██║██║  ██║
 ██║  ██║██║  ██║   ██║       ╚██████╗███████╗╚██████╔╝╚██████╔╝██████╔╝
 ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝        ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝""")
-    sticks = len(language.hatcloud_description) * '-'
+    sticks = len(titles.hatcloud_description) * '-'
     print(sticks)
-    print(language.hatcloud_description)
+    print(titles.hatcloud_description)
     print(sticks,'\n')
 
-def sub6_banner(language):
+def sub6_banner(titles):
     print(Color.red+"""   
    _________    ___.     ________
   /   _____/__ _\_ |__  /  _____/
@@ -209,24 +209,24 @@ def sub6_banner(language):
   /        \  |  / \_\ \  |__\  \  
  /_______  /____/|___  /\_____  /
          \/          \/       \/"""+Color.white)
-    sticks = len(language.sub6_description) * '-'
+    sticks = len(titles.sub6_description) * '-'
     print(sticks)
-    print(language.sub6_description)
+    print(titles.sub6_description)
     print(sticks,'\n')
 
-def masscan_banner(language):
+def masscan_banner(titles):
     print(Color.white+""" 
  __  __    _    ____ ____   ____    _    _   _ 
 |  \/  |  / \  / ___/ ___| / ___|  / \  | \ | |
 | |\/| | / _ \ \___ \___ \| |     / _ \ |  \| |
 | |  | |/ ___ \ ___) |__) | |___ / ___ \| |\  |
 |_|  |_/_/   \_\____/____/ \____/_/   \_\_| \_|""")
-    sticks = len(language.masscan_description) * '-'
+    sticks = len(titles.masscan_description) * '-'
     print(sticks)
-    print(language.masscan_description)
+    print(titles.masscan_description)
     print(sticks, '\n')
 
-def dnsmap_banner(language):
+def dnsmap_banner(titles):
     print(Color.white+"""     
      _                                 
   __| |_ __  ___ _ __ ___   __ _ _ __  
@@ -234,24 +234,24 @@ def dnsmap_banner(language):
 | (_| | | | \__ \ | | | | | (_| | |_) |
  \__,_|_| |_|___/_| |_| |_|\__,_| .__/ 
                                 |_|""")
-    sticks = len(language.dnsmap_description) * '-'
+    sticks = len(titles.dnsmap_description) * '-'
     print(sticks)
-    print(language.dnsmap_description)
+    print(titles.dnsmap_description)
     print(sticks, '\n')
 
-def infosploit_banner(language):
+def infosploit_banner(titles):
     print(Color.blue+"""    
     ____      ____     _____       __      _ __ 
    /  _/___  / __/___ / ___/____  / /___  (_) /_
    / // __ \/ /_/ __ \\\__ \/ __ \/ / __ \/ / __/
  _/ // / / / __/ /_/ /__/ / /_/ / / /_/ / / /_  
 /___/_/ /_/_/  \____/____/ .___/_/\____/_/\__/"""+Color.white)
-    sticks = len(language.infosploit_description) * '-'
+    sticks = len(titles.infosploit_description) * '-'
     print(sticks)
-    print(language.infosploit_description)
+    print(titles.infosploit_description)
     print(sticks,'\n')
 
-def infoga_banner(language):
+def infoga_banner(titles):
     print(Color.white+"""    
     ____      ____                 
    /  _/___  / __/___  ____ _____ _
@@ -259,24 +259,24 @@ def infoga_banner(language):
  _/ // / / / __/ /_/ / /_/ / /_/ / 
 /___/_/ /_/_/  \____/\__, /\__,_/  
                     /____/""")
-    sticks = len(language.infoga_description) * '-'
+    sticks = len(titles.infoga_description) * '-'
     print(sticks)
-    print(language.infoga_description)
+    print(titles.infoga_description)
     print(sticks,'\n')
 
-def httrack_banner(language):
+def httrack_banner(titles):
     print(Color.white+""" 
  _   _ _____ _____               _    
 | | | |_   _|_   _| __ __ _  ___| | __
 | |_| | | |   | || '__/ _` |/ __| |/ /
 |  _  | | |   | || | | (_| | (__|   < 
 |_| |_| |_|   |_||_|  \__,_|\___|_|\_\ """)
-    sticks = len(language.httrack_description) * '-'
+    sticks = len(titles.httrack_description) * '-'
     print(sticks)
-    print(language.httrack_description)
+    print(titles.httrack_description)
     print(sticks,'\n')
 
-def apt2_banner(language):
+def apt2_banner(titles):
     print(Color.white+"""       
        dM.    `MMMMMMMb. MMMMMMMMMM      
       ,MMb     MM    `Mb /   MM   \      
@@ -288,12 +288,12 @@ def apt2_banner(language):
    ,MMMMMMMMb  MM            MM   ,M'    
    d'      YM. MM            MM ,M'      
  _dM_     _dMM_MM_          _MM_MMMMMMMM""")
-    sticks = len(language.apt2_description) * '-'
+    sticks = len(titles.apt2_description) * '-'
     print(sticks)
-    print(language.apt2_description)
+    print(titles.apt2_description)
     print(sticks,'\n')
 
-def inspy_banner(language):
+def inspy_banner(titles):
     print(Color.white+"""  
   ___        ____              
  |_ _|_ __  /____| _ __  _   _ 
@@ -301,47 +301,47 @@ def inspy_banner(language):
   | || | | | ___) | |_) | |_| |
  |___|_| |_||____/| .__/ \__, |
                   |_|    |___/ """)
-    sticks = len(language.inspy_description) * '-'
+    sticks = len(titles.inspy_description) * '-'
     print(sticks)
-    print(language.inspy_description)
+    print(titles.inspy_description)
     print(sticks,'\n')
 
-def setoolkit_banner(language):
+def setoolkit_banner(titles):
     print(Color.white+""" 
  _____ _____ _____         _ _   _ _   
 |   __|   __|_   _|___ ___| | |_|_| |_ 
 |__   |   __| | | | . | . | | '_| |  _|
 |_____|_____| |_| |___|___|_|_,_|_|_|""")
-    sticks = len(language.setoolkit_description) * '-'
+    sticks = len(titles.setoolkit_description) * '-'
     print(sticks)
-    print(language.setoolkit_description)
+    print(titles.setoolkit_description)
     print(sticks,'\n')
 
-def ghost_phisher_banner(language):
+def ghost_phisher_banner(titles):
     print(Color.white+"""  
   ____ _               _   ____  _     _     _               
  / ___| |__   ___  ___| |_|  _ \| |__ (_)___| |__   ___ _ __ 
 | |  _| '_ \ / _ \/ __| __| |_) | '_ \| / __| '_ \ / _ \ '__|
 | |_| | | | | (_) \__ \ |_|  __/| | | | \__ \ | | |  __/ |   
  \____|_| |_|\___/|___/\__|_|   |_| |_|_|___/_| |_|\___|_|""")
-    sticks = len(language.ghost_phisher_description) * '-'
+    sticks = len(titles.ghost_phisher_description) * '-'
     print(sticks)
-    print(language.ghost_phisher_description)
+    print(titles.ghost_phisher_description)
     print(sticks,'\n')
 
-def phishx_banner(language):
+def phishx_banner(titles):
     print(Color.white+"""    
     #################################"
                 -PHISHX- "
     #################################"
         [+]: MADE BY WEEBSEC :[+]"
     #################################""")               # what in the everloving fucking christ is "weebsec" :crying_skull:
-    sticks = len(language.phishx_description) * '-'
+    sticks = len(titles.phishx_description) * '-'
     print(sticks)
-    print(language.phishx_description)
+    print(titles.phishx_description)
     print(sticks,'\n')
 
-def phisherman_banner(language):
+def phisherman_banner(titles):
     print(Color.blue+""" 
 _______         _________ _______         _______ _______    _______ _______ _         
 (  ____ )\     /|\__   __/(  ____ \\\     /|  ____ \  ____ )  (       )  ___  ) (    /|  
@@ -351,24 +351,24 @@ _______         _________ _______         _______ _______    _______ _______ _
 | (     | (   ) |   | |         ) | (   ) | (     | (\ (     | |   | | (   ) | | \   |  
 | )     | )   ( |___) (___/\____) | )   ( | (____/\ ) \ \__  | )   ( | )   ( | )  \  |  
 |/      |/     \|\_______/\_______)/     \|_______//   \__/  |/     \|/     \|/    )_)"""+Color.white)
-    sticks = len(language.phisherman_description) * '-'
+    sticks = len(titles.phisherman_description) * '-'
     print(sticks)
-    print(language.phisherman_description)
+    print(titles.phisherman_description)
     print(sticks,'\n')
 
-def aron_banner(language):
+def aron_banner(titles):
     print(Color.green+"""    
     ___                                         
    /   |  _________  ___ 
   / /| | / ___/ __ \\/ __\\
  / ___ |/ /  / /_/ / / / /
 /_/  |_/_/   \\____/_/ /_/"""+Color.white)
-    sticks = len(language.aron_description) * '-'
+    sticks = len(titles.aron_description) * '-'
     print(sticks)
-    print(language.aron_description)
+    print(titles.aron_description)
     print(sticks,'\n')
 
-def evilginx2_banner(language):
+def evilginx2_banner(titles):
     print(Color.white+"""
 ___________     .__.__          .__               
 \_   _____/__  _|__|  |    ____ |__| ____ ___  ___ 
@@ -376,22 +376,22 @@ ___________     .__.__          .__
  |        \\\   /|  |  |__/ /_/  >  |   |  \>    <  
 /_______  / \_/ |__|____/\___  /|__|___|  /__/\_ \ 
         \/              /_____/         \/      \/""")
-    sticks = len(language.evilginx2_description) * '-'
+    sticks = len(titles.evilginx2_description) * '-'
     print(sticks)
-    print(language.evilginx2_description)
+    print(titles.evilginx2_description)
     print(sticks,'\n')
 
-def infinity_banner(language):
+def infinity_banner(titles):
     print("""  
   .      _ .     . ___
   | |\| /- | |\| |  |  `/
                        /""")
-    sticks = len(language.infinity_description) * '-'
+    sticks = len(titles.infinity_description) * '-'
     print(sticks)
-    print(language.infinity_description)
+    print(titles.infinity_description)
     print(sticks,'\n')
 
-def credsniper_banner(language):
+def credsniper_banner(titles):
     print(Color.white+"""  
   ____              _ ____        _                 
  / ___|_ __ ___  __| / ___| _ __ (_)_ __   ___ _ __ 
@@ -399,12 +399,12 @@ def credsniper_banner(language):
 | |___| | |  __/ (_| |___) | | | | | |_) |  __/ |   
  \____|_|  \___|\__,_|____/|_| |_|_| .__/ \___|_|   
                                    |_|""")
-    sticks = len(language.credsniper_description) * '-'
+    sticks = len(titles.credsniper_description) * '-'
     print(sticks)
-    print(language.credsniper_description)
+    print(titles.credsniper_description)
     print(sticks,'\n')
 
-def subdomain_analyzer_banner(language):
+def subdomain_analyzer_banner(titles):
     print(Color.white+""" 
  ____        _     ____                        _          _                _                    
 / ___| _   _| |__ |  _ \  ___  _ __ ___   __ _(_)_ __    / \   _ __   __ _| |_   _ _______ _ __ 
@@ -412,12 +412,12 @@ def subdomain_analyzer_banner(language):
  ___) | |_| | |_) | |_| | (_) | | | | | | (_| | | | | |/ ___ \| | | | (_| | | |_| |/ /  __/ |   
 |____/ \__,_|_.__/|____/ \___/|_| |_| |_|\__,_|_|_| |_/_/   \_\_| |_|\__,_|_|\__, /___\___|_|   
                                                                              |___/""")
-    sticks = len(language.subdomain_analyzer_description) * '-'
+    sticks = len(titles.subdomain_analyzer_description) * '-'
     print(sticks)
-    print(language.subdomain_analyzer_description)
+    print(titles.subdomain_analyzer_description)
     print(sticks,'\n')
 
-def sqlmap_banner(language):
+def sqlmap_banner(titles):
     print(Color.white+"""        
         ___
        __H__
@@ -425,24 +425,24 @@ def sqlmap_banner(language):
 |_ -| . ["]     | .'| . |
 |___|_  ["]_|_|_|__,|  _|
       |_|V...       |_|   """)
-    sticks = len(language.sqlmap_description) * '-'
+    sticks = len(titles.sqlmap_description) * '-'
     print(sticks)
-    print(language.sqlmap_description)
+    print(titles.sqlmap_description)
     print(sticks,'\n')
 
-def sqlmate_banner(language):
+def sqlmate_banner(titles):
     print(Color.white+"""        
         _H_          _       
  ___ ___|.|_____ ___| |_ ___ 
 |_ -| . |.|     | .'|  _| -_|
 |___|_  |.|_|_|_|__,|_| |___|
       |_|V""")
-    sticks = len(language.sqlmate_description) * '-'
+    sticks = len(titles.sqlmate_description) * '-'
     print(sticks)
-    print(language.sqlmate_description)
+    print(titles.sqlmate_description)
     print(sticks,'\n')
 
-def searchsploit_banner(language):
+def searchsploit_banner(titles):
     print(Color.white+""" 
  ____                      _     ____        _       _ _   
 / ___|  ___  __ _ _ __ ___| |__ / ___| _ __ | | ___ (_) |_ 
@@ -450,24 +450,24 @@ def searchsploit_banner(language):
  ___) |  __/ (_| | | | (__| | | |___) | |_) | | (_) | | |_ 
 |____/ \___|\__,_|_|  \___|_| |_|____/| .__/|_|\___/|_|\__|
                                       |_|""")
-    sticks = len(language.searchsploit_description) * '-'
+    sticks = len(titles.searchsploit_description) * '-'
     print(sticks)
-    print(language.searchsploit_description)
+    print(titles.searchsploit_description)
     print(sticks,'\n')
 
-def brakeman_banner(language):
+def brakeman_banner(titles):
     print(Color.white+""" 
  ____            _                              
 | __ ) _ __ __ _| | _____ _ __ ___   __ _ _ __  
 |  _ \| '__/ _` | |/ / _ \ '_ ` _ \ / _` | '_ \ 
 | |_) | | | (_| |   <  __/ | | | | | (_| | | | |
 |____/|_|  \__,_|_|\_\___|_| |_| |_|\__,_|_| |_|""")
-    sticks = len(language.brakeman_description) * '-'
+    sticks = len(titles.brakeman_description) * '-'
     print(sticks)
-    print(language.brakeman_description)
+    print(titles.brakeman_description)
     print(sticks,'\n')
 
-def whatweb_banner(language):
+def whatweb_banner(titles):
     print(Color.white+"""
 .$$$     $.                                   .$$$     $.         
 $$$$     $$. .$$$  $$$ .$$$$$$.  .$$$$$$$$$$. $$$$     $$. .$$$$$$$. .$$$$$$. 
@@ -477,35 +477,35 @@ $. $     $$$ $. $$$$$$ $. $$$$$$ `$  $. $  :' $. $     $$$ $. $$$$   $. $$$$$.
 $::$  .  $$$ $::$  $$$ $::$  $$$     $::$     $::$  .  $$$ $::$      $::$  $$$$
 $;;$ $$$ $$$ $;;$  $$$ $;;$  $$$     $;;$     $;;$ $$$ $$$ $;;$      $;;$  $$$$
 $$$$$$ $$$$$ $$$$  $$$ $$$$  $$$     $$$$     $$$$$$ $$$$$ $$$$$$$$$ $$$$$$$$$'""")
-    sticks = len(language.whatweb_description) * '-'
+    sticks = len(titles.whatweb_description) * '-'
     print(sticks)
-    print(language.whatweb_description)
+    print(titles.whatweb_description)
     print(sticks,'\n')
 
-def vulscan_banner(language):
+def vulscan_banner(titles):
     print(Color.white+"""
              _                     
 __   ___   _| |___  ___ __ _ _ __  
 \ \ / / | | | / __|/ __/ _` | '_ \ 
  \ V /| |_| | \__ \ (_| (_| | | | |
   \_/  \__,_|_|___/\___\__,_|_| |_|""")
-    sticks = len(language.vulscan_description) * '-'
+    sticks = len(titles.vulscan_description) * '-'
     print(sticks)
-    print(language.vulscan_description)
+    print(titles.vulscan_description)
     print(sticks,'\n')
 
-def takeover_banner(language):
+def takeover_banner(titles):
     print(Color.white+"""   
    /~\ 
   C oo   ---------------
  _( ^)  |T|A|K|E|O|V|E|R|
 /   ~\  ----------------""")
-    sticks = len(language.takeover_description) * '-'
+    sticks = len(titles.takeover_description) * '-'
     print(sticks)
-    print(language.takeover_description)
+    print(titles.takeover_description)
     print(sticks,'\n')
 
-def openvas_banner(language):
+def openvas_banner(titles):
     print(Color.white+"""   
    ____                 _    _____   _____
   / __ \____  ___  ____| |  / /   | / ___/
@@ -513,46 +513,46 @@ def openvas_banner(language):
 / /_/ / /_/ /  __/ / / / |/ / ___ |___/ / 
 \____/ .___/\___/_/ /_/|___/_/  |_/____/  
     /_/""")
-    sticks = len(language.openvas_description) * '-'
+    sticks = len(titles.openvas_description) * '-'
     print(sticks)
-    print(language.openvas_description)
+    print(titles.openvas_description)
     print(sticks,'\n')
 
-def droid_hunter_banner(language):
+def droid_hunter_banner(titles):
     print(Color.white+"""
 ╔╦╗╦═╗╔═╗╦╔╦╗   ╦ ╦╦ ╦╔╗╔╔╦╗╔═╗╦═╗
  ║║╠╦╝║ ║║ ║║───╠═╣║ ║║║║ ║ ║╣ ╠╦╝
 ═╩╝╩╚═╚═╝╩═╩╝   ╩ ╩╚═╝╝╚╝ ╩ ╚═╝╩╚═""")
-    sticks = len(language.droid_hunter_description) * '-'
+    sticks = len(titles.droid_hunter_description) * '-'
     print(sticks)
-    print(language.droid_hunter_description)
+    print(titles.droid_hunter_description)
     print(sticks,'\n')
 
-def patrowl_banner(language):
+def patrowl_banner(titles):
     print(Color.white+""" 
  ____       _         ___           _ 
 |  _ \ __ _| |_ _ __ / _ \__      _| |
 | |_) / _` | __| '__| | | \ \ /\ / / |
 |  __/ (_| | |_| |  | |_| |\ V  V /| |
 |_|   \__,_|\__|_|   \___/  \_/\_/ |_|""")
-    sticks = len(language.patrowl_description) * '-'
+    sticks = len(titles.patrowl_description) * '-'
     print(sticks)
-    print(language.patrowl_description)
+    print(titles.patrowl_description)
     print(sticks,'\n')
 
-def infection_monkey_banner(language):
+def infection_monkey_banner(titles):
     print(Color.white+""" 
  _____     ___         _   _         _____         _           
 |     |___|  _|___ ___| |_|_|___ ___|     |___ ___| |_ ___ _ _ 
 |-   -|   |  _| -_|  _|  _| | . |   | | | | . |   | '_| -_| | |
 |_____|_|_|_| |___|___|_| |_|___|_|_|_|_|_|___|_|_|_,_|___|_  |
                                                           |___|""")
-    sticks = len(language.infection_monkey_description) * '-'
+    sticks = len(titles.infection_monkey_description) * '-'
     print(sticks)
-    print(language.infection_monkey_description)
+    print(titles.infection_monkey_description)
     print(sticks,'\n')
 
-def vuls_banner(language):
+def vuls_banner(titles):
     print(Color.white+"""
 ____   ____    .__          
 \   \ /   /_ __|  |   ______
@@ -560,24 +560,24 @@ ____   ____    .__
   \     /|  |  /  |__\___ \ 
    \___/ |____/|____/____  >
                          \/""")
-    sticks = len(language.vuls_description) * '-'
+    sticks = len(titles.vuls_description) * '-'
     print(sticks)
-    print(language.vuls_description)
+    print(titles.vuls_description)
     print(sticks,'\n')
 
-def wpseku_banner(language):
+def wpseku_banner(titles):
     print(Color.white+"""                   
                    _       
  _ _ _ ___ ___ ___| |_ _ _ 
 | | | | . |_ -| -_| '_| | |
 |_____|  _|___|___|_,_|___|
       |_|""")
-    sticks = len(language.wpseku_description) * '-'
+    sticks = len(titles.wpseku_description) * '-'
     print(sticks)
-    print(language.wpseku_description)
+    print(titles.wpseku_description)
     print(sticks,'\n')
 
-def wpscan_banner(language):
+def wpscan_banner(titles):
     print(Color.white+"""
 __          _______   _____
 \ \        / /  __ \ / ____|
@@ -585,12 +585,12 @@ __          _______   _____
   \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \ 
    \  /\  /  | |     ____) | (__| (_| | | | |
     \/  \/   |_|    |_____/ \___|\__,_|_| |_|""")
-    sticks = len(language.wpscan_description) * '-'
+    sticks = len(titles.wpscan_description) * '-'
     print(sticks)
-    print(language.wpscan_description)
+    print(titles.wpscan_description)
     print(sticks,'\n')
 
-def routersploit_banner(language):
+def routersploit_banner(titles):
     print(Color.white+"""
 ______            _            _____       _       _ _
 | ___ \          | |          /  ___|     | |     (_) |
@@ -600,12 +600,12 @@ ______            _            _____       _       _ _
 \_| \_\___/ \__,_|\__\___|_|  \____/| .__/|_|\___/|_|\__|
                                      | |
                                      |_|""")
-    sticks = len(language.routersploit_description) * '-'
+    sticks = len(titles.routersploit_description) * '-'
     print(sticks)
-    print(language.routersploit_description)
+    print(titles.routersploit_description)
     print(sticks,'\n')
 
-def xsstrike_banner(language):
+def xsstrike_banner(titles):
     print(Color.white+"""
 ____  ___  _________ _________ __         .__ __           
 \   \/  / /   _____//   _____//  |________|__|  | __ ____  
@@ -613,12 +613,12 @@ ____  ___  _________ _________ __         .__ __
  /     \  /        \/        \|  |  |  | \/  |    <\  ___/"""+Color.white+""" 
 /___/\  \/_______  /_______  /|__|  |__|  |__|__|_ \\\___  >
       \_/        \/        \/                     \/    \/""")
-    sticks = len(language.xsstrike_description) * '-'
+    sticks = len(titles.xsstrike_description) * '-'
     print(sticks)
-    print(language.xsstrike_description)
+    print(titles.xsstrike_description)
     print(sticks,'\n')
 
-def striker_banner(language):
+def striker_banner(titles):
     print(Color.red+"""  
   _________ __         .__ __                 
  /   _____//  |________|__|  | __  ___________ 
@@ -626,12 +626,12 @@ def striker_banner(language):
  /        \|  |  |  | \/  |    < \  ___/|  | \/
 /_______  /|__|  |__|  |__|__|_ \ \___  >__|   
         \/                     \/    \/""")
-    sticks = len(language.striker_description) * '-'
+    sticks = len(titles.striker_description) * '-'
     print(sticks)
-    print(language.striker_description)
+    print(titles.striker_description)
     print(sticks,'\n')
 
-def raptor_banner(language):
+def raptor_banner(titles):
     print(Color.white+"""
 __________                __                
 \______   \_____  _______/  |_  ___________ 
@@ -639,57 +639,57 @@ __________                __
  |    |   \ / __ \|  |_> >  | (  <_> )  | \/
  |____|_  /(____  /   __/|__|  \____/|__|   
         \/      \/|__|""")
-    sticks = len(language.raptor_description) * '-'
+    sticks = len(titles.raptor_description) * '-'
     print(sticks)
-    print(language.raptor_description)
+    print(titles.raptor_description)
     print(sticks,'\n')
 
-def breacher_banner(language):
+def breacher_banner(titles):
     print(Color.blue+"""
 ______   ______ _______ _______ _______ _     _ _______  ______
 |_____] |_____/ |______ |_____| |       |_____| |______ |_____/
 |_____] |    \_ |______ |     | |_____  |     | |______ |    \_"""+Color.white)
-    sticks = len(language.breacher_description) * '-'
+    sticks = len(titles.breacher_description) * '-'
     print(sticks)
-    print(language.breacher_description)
+    print(titles.breacher_description)
     print(sticks,'\n')
 
-def wascan_banner(language):
+def wascan_banner(titles):
     print(Color.white+""" 
  _ _ _ _____ _____             
 | | | |  _  |   __|___ ___ ___ 
 | | | |     |__   |  _| .'|   |
 |_____|__|__|_____|___|__,|_|_|""")
-    sticks = len(language.wascan_description) * '-'
+    sticks = len(titles.wascan_description) * '-'
     print(sticks)
-    print(language.wascan_description)
+    print(titles.wascan_description)
     print(sticks,'\n')
 
-def xsser_banner(language):
+def xsser_banner(titles):
     print(Color.white+"""
  __  ______ ____            
  \ \/ / ___/ ___|  ___ _ __ 
   \  /\___ \___ \ / _ \ '__|
   /  \ ___) |__) |  __/ |   
  /_/\_\____/____/ \___|_|""")
-    sticks = len(language.xsser_description) * '-'
+    sticks = len(titles.xsser_description) * '-'
     print(sticks)
-    print(language.xsser_description)
+    print(titles.xsser_description)
     print(sticks,'\n')
 
-def spectre_meldown_checker_banner(language):
+def spectre_meldown_checker_banner(titles):
     print(Color.white+"""
                  _                     _    _                    _           _           
  ____ __  ___ __| |_ _ _ ___ _ __  ___| |__| |_____ __ ___ _  __| |_  ___ __| |_____ _ _ 
 (_-< '_ \/ -_) _|  _| '_/ -_) '  \/ -_) / _` / _ \ V  V / ' \/ _| ' \/ -_) _| / / -_) '_|
 /__/ .__/\___\__|\__|_| \___|_|_|_\___|_\__,_\___/\_/\_/|_||_\__|_||_\___\__|_\_\___|_|  
    |_|""")
-    sticks = len(language.spectre_meldown_checker_description) * '-'
+    sticks = len(titles.spectre_meldown_checker_description) * '-'
     print(sticks)
-    print(language.spectre_meldown_checker_description)
+    print(titles.spectre_meldown_checker_description)
     print(sticks,'\n')
 
-def brutedum_banner(language):
+def brutedum_banner(titles):
     print(Color.yellow+"""
 888888                           888888                BRUTE            
 8    8   eeeee  e   e eeeee eeee 8    8 e   e eeeeeee  FORCE
@@ -697,12 +697,12 @@ def brutedum_banner(language):
 88     8 8eee8e 8e  8   8e  8eee 88   8 8e  8 8e 8  8  FOR
 88     8 88   8 88  8   88  88   88   8 88  8 88 8  8  THE
 88eeeee8 88   8 88ee8   88  88ee 88eee8 88ee8 88 8  8  DUMMIES"""+Color.white)
-    sticks = len(language.brutedum_description) * '-'
+    sticks = len(titles.brutedum_description) * '-'
     print(sticks)
-    print(language.brutedum_description)
+    print(titles.brutedum_description)
     print(sticks,'\n')
 
-def ftpbruter_banner(language):
+def ftpbruter_banner(titles):
     print(Color.yellow+"""
  ______   _______   _____    ____                   _                 
 |  ____| |__   __| |  __ \  |  _ \                 | |                
@@ -710,34 +710,34 @@ def ftpbruter_banner(language):
 |  __|      | |    |  ___/  |  _ <  | '__| | | | | | __|  / _ \ | '__|
 | |         | |    | |      | |_) | | |    | |_| | | |_  |  __/ | |   
 |_|         |_|    |_|      |____/  |_|     \__,_|  \__|  \___| |_|"""+Color.white)
-    sticks = len(language.ftpbruter_description) * '-'
+    sticks = len(titles.ftpbruter_description) * '-'
     print(sticks)
-    print(language.ftpbruter_description)
+    print(titles.ftpbruter_description)
     print(sticks,'\n')
 
-def hash_buster_banner(language):
+def hash_buster_banner(titles):
     print(Color.white+"""
 _  _ ____ ____ _  _    ___  _  _ ____ ___ ____ ____
 |__| |__| [__  |__|    |__] |  | [__   |  |___ |__/
 |  | |  | ___] |  |    |__] |__| ___]  |  |___ |  \ """)
-    sticks = len(language.hash_buster_description) * '-'
+    sticks = len(titles.hash_buster_description) * '-'
     print(sticks)
-    print(language.hash_buster_description)
+    print(titles.hash_buster_description)
     print(sticks,'\n')
 
-def socialbox_banner(language):
+def socialbox_banner(titles):
     print(Color.green+"""
 .▄▄ ·        ▄▄· ▪   ▄▄▄· ▄▄▌      ▄▄▄▄·       ▐▄• ▄ 
 ▐█ ▀. ▪     ▐█ ▌▪██ ▐█ ▀█ ██•      ▐█ ▀█▪▪      █▌█▌▪
 ▄▀▀▀█▄ ▄█▀▄ ██ ▄▄▐█·▄█▀▀█ ██▪      ▐█▀▀█▄ ▄█▀▄  ·██· 
 ▐█▄▪▐█▐█▌.▐▌▐███▌▐█▌▐█ ▪▐▌▐█▌▐▌    ██▄▪▐█▐█▌.▐▌▪▐█·█▌
  ▀▀▀▀  ▀█▄▀▪·▀▀▀ ▀▀▀ ▀  ▀ .▀▀▀     ·▀▀▀▀  ▀█▄▀▪•▀▀ ▀▀"""+Color.white)
-    sticks = len(language.socialbox_description) * '-'
+    sticks = len(titles.socialbox_description) * '-'
     print(sticks)
-    print(language.socialbox_description)
+    print(titles.socialbox_description)
     print(sticks,'\n')
 
-def blazy_banner(language):
+def blazy_banner(titles):
     print(Color.white+"""
  ____   _                    
 |  _ \ | |              
@@ -747,12 +747,12 @@ def blazy_banner(language):
 |____/ |_| \__,_|/___| \__, |
                         __/ |
  Made with <3 By D3V   |___/ """)
-    sticks = len(language.blazy_description) * '-'
+    sticks = len(titles.blazy_description) * '-'
     print(sticks)
-    print(language.blazy_description)
+    print(titles.blazy_description)
     print(sticks,'\n')
 
-def ncrack_banner(language):
+def ncrack_banner(titles):
     print(Color.white+"""
  _   _                     _    
 | \ | |                   | |   
@@ -760,12 +760,12 @@ def ncrack_banner(language):
 | . ` |/ __| '__/ _` |/ __| |/ /
 | |\  | (__| | | (_| | (__|   < 
 |_| \_|\___|_|  \__,_|\___|_|\_\ """)
-    sticks = len(language.ncrack_description) * '-'
+    sticks = len(titles.ncrack_description) * '-'
     print(sticks)
-    print(language.ncrack_description)
+    print(titles.ncrack_description)
     print(sticks,'\n')
 
-def kickthemout_banner(language):
+def kickthemout_banner(titles):
     print(Color.green+"""
 █  █▀ ▄█ ▄█▄    █  █▀    ▄▄▄▄▀  ▄  █ ▄███▄   █▀▄▀█  ████▄   ▄      ▄▄▄▄▀
 █▄█   ██ █▀ ▀▄  █▄█   ▀▀▀ █    █   █ █▀   ▀  █ █ █  █   █    █  ▀▀▀ █
@@ -773,12 +773,12 @@ def kickthemout_banner(language):
 █  █  ▐█ █▄  ▄▀ █  █     █     █   █ █▄   ▄▀ █   █  ▀████ █   █    █
  █    ▐ ▀███▀    █     ▀         █  ▀███▀      █         █▄ ▄█   ▀
  ▀               ▀               ▀             ▀           ▀▀▀"""+Color.white)
-    sticks = len(language.kickthemout_description) * '-'
+    sticks = len(titles.kickthemout_description) * '-'
     print(sticks)
-    print(language.kickthemout_description)
+    print(titles.kickthemout_description)
     print(sticks,'\n')
 
-def sniffair_banner(language):
+def sniffair_banner(titles):
     print(Color.white+"""
     
                                                                      % *        ., %                         
@@ -794,12 +794,12 @@ def sniffair_banner(language):
  .@@&/,,#@@@    %@@       &@@@,    @@%    %@@          ,@@            /(*       /(#     ,@@     @@*      @@# 
    *%@@@&*      *%#        ,%#     #%/    *%#           %%            #############.    .%#     #%.      .%% 
                                                                   (@Tyl0us & @theDarracott)""")
-    sticks = len(language.sniffair_description) * '-'
+    sticks = len(titles.sniffair_description) * '-'
     print(sticks)
-    print(language.sniffair_description)
+    print(titles.sniffair_description)
     print(sticks,'\n')
 
-def wifi_pumpkin_banner(language):
+def wifi_pumpkin_banner(titles):
     print(Color.white+"""
 __        ___ _____ _ ____                        _    _       
 \ \      / (_)  ___(_)  _ \ _   _ _ __ ___  _ __ | | _(_)_ __  
@@ -807,12 +807,12 @@ __        ___ _____ _ ____                        _    _
   \ V  V / | |  _| | |  __/| |_| | | | | | | |_) |   <| | | | |
    \_/\_/  |_|_|   |_|_|    \__,_|_| |_| |_| .__/|_|\_\_|_| |_|
                                            |_|""")
-    sticks = len(language.wifi_pumpkin_description) * '-'
+    sticks = len(titles.wifi_pumpkin_description) * '-'
     print(sticks)
-    print(language.wifi_pumpkin_description)
+    print(titles.wifi_pumpkin_description)
     print(sticks,'\n')
 
-def airgeddon_banner(language):
+def airgeddon_banner(titles):
     print(Color.yellow+"""
        .__                         .___  .___             
 _____  |__|______  ____   ____   __| _/__| _/____   ____  
@@ -820,12 +820,12 @@ _____  |__|______  ____   ____   __| _/__| _/____   ____
  / __ \|  ||  | \/ /_/  >  ___// /_/ / /_/ (  <_> )   |  \ 
 (____  /__||__|  \___  / \___  >____ \____ |\____/|___|  / 
      \/         /_____/      \/     \/    \/           \/ """+Color.white)
-    sticks = len(language.airgeddon_description) * '-'
+    sticks = len(titles.airgeddon_description) * '-'
     print(sticks)
-    print(language.airgeddon_description)
+    print(titles.airgeddon_description)
     print(sticks,'\n')
 
-def pikarma_banner(language):
+def pikarma_banner(titles):
     print(Color.white+"""
 ██████╗ ██╗██╗  ██╗ █████╗ ██████╗ ███╗   ███╗ █████╗
 ██╔══██╗██║██║ ██╔╝██╔══██╗██╔══██╗████╗ ████║██╔══██╗
@@ -833,35 +833,35 @@ def pikarma_banner(language):
 ██╔═══╝ ██║██╔═██╗ ██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║
 ██║     ██║██║  ██╗██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║
 ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝""")
-    sticks = len(language.pikarma_description) * '-'
+    sticks = len(titles.pikarma_description) * '-'
     print(sticks)
-    print(language.pikarma_description)
+    print(titles.pikarma_description)
     print(sticks,'\n')
 
-def wifite2_banner(language):
+def wifite2_banner(titles):
     print(Color.white+"""
    .               .    
  .´  ·  .     .  ·  `.  wifite 2
  :  :  :  (¯)  :  :  :  automated wireless auditor
  `.  ·  ` /¯\ ´  ·  .´  https://github.com/derv82/wifite2
    `     /¯¯¯\     ´""")
-    sticks = len(language.wifite2_description) * '-'
+    sticks = len(titles.wifite2_description) * '-'
     print(sticks)
-    print(language.wifite2_description)
+    print(titles.wifite2_description)
     print(sticks,'\n')
 
-def pixiewps_banner(language):
+def pixiewps_banner(titles):
     print(Color.white+"""
  _____ _     _     _ _ _ _____ _____ 
 |  _  |_|_ _|_|___| | | |  _  |   __|
 |   __| |_'_| | -_| | | |   __|__   |
 |__|  |_|_,_|_|___|_____|__|  |_____|""")
-    sticks = len(language.pixiewps_description) * '-'
+    sticks = len(titles.pixiewps_description) * '-'
     print(sticks)
-    print(language.pixiewps_description)
+    print(titles.pixiewps_description)
     print(sticks,'\n')
 
-def fluxion_banner(language):
+def fluxion_banner(titles):
     print(Color.red+"""
  ⌠▓▒▓▒   ⌠▓╗     ⌠█┐ ┌█   ┌▓\  /▓┐   ⌠▓╖   ⌠◙▒▓▒◙   ⌠█\  ☒┐             
  ║▒_     │▒║     │▒║ ║▒    \▒\/▒/    │☢╫   │▒┌╤┐▒   ║▓▒\ ▓║             
@@ -869,35 +869,35 @@ def fluxion_banner(language):
  ║▒      │▒║__   │▒└_┘▒    /▒/\▒\    │☢╫   │▒└╧┘▒   ║█ \▒█║             
  ⌡▓      ⌡◘▒▓▒   ⌡◘▒▓▒◘   └▓/  \▓┘   ⌡▓╝   ⌡◙▒▓▒◙   ⌡▓  \▓┘             
 ¯¯¯     ¯¯¯¯¯¯  ¯¯¯¯¯¯¯  ¯¯¯    ¯¯¯ ¯¯¯¯  ¯¯¯¯¯¯¯  ¯¯¯¯¯¯¯¯"""+Color.white)
-    sticks = len(language.fluxion_description) * '-'
+    sticks = len(titles.fluxion_description) * '-'
     print(sticks)
-    print(language.fluxion_description)
+    print(titles.fluxion_description)
     print(sticks,'\n')
 
-def reaver_banner(language):
+def reaver_banner(titles):
     print(Color.white+"""
  ____                           
 |  _ \ ___  __ ___   _____ _ __ 
 | |_) / _ \/ _` \ \ / / _ \ '__|
 |  _ <  __/ (_| |\ V /  __/ |   
 |_| \_\___|\__,_| \_/ \___|_|""")
-    sticks = len(language.reaver_description) * '-'
+    sticks = len(titles.reaver_description) * '-'
     print(sticks)
-    print(language.reaver_description)
+    print(titles.reaver_description)
     print(sticks,'\n')
 
-def zarp_banner(language):
+def zarp_banner(titles):
     print(Color.green+"""
  ____   __   ____  ____
 (__  ) / _\ (  _ \(  _ '
  / _/ /    \ )   / ) __/
 (____)\_/\_/(__\_)(__)"""+Color.white)
-    sticks = len(language.zarp_description) * '-'
+    sticks = len(titles.zarp_description) * '-'
     print(sticks)
-    print(language.zarp_description)
+    print(titles.zarp_description)
     print(sticks,'\n')
 
-def xerosploit_banner(language):
+def xerosploit_banner(titles):
     print(Color.white+"""
 ██╗  ██╗███████╗██████╗  ██████╗ ███████╗██████╗ ██╗      ██████╗ ██╗████████╗
 ╚██╗██╔╝██╔════╝██╔══██╗██╔═══██╗██╔════╝██╔══██╗██║     ██╔═══██╗██║╚══██╔══╝
@@ -905,12 +905,12 @@ def xerosploit_banner(language):
  ██╔██╗ ██╔══╝  ██╔══██╗██║   ██║╚════██║██╔═══╝ ██║     ██║   ██║██║   ██║
 ██╔╝ ██╗███████╗██║  ██║╚██████╔╝███████║██║     ███████╗╚██████╔╝██║   ██║
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝     ╚══════╝ ╚═════╝ ╚═╝   ╚═╝""")
-    sticks = len(language.xerosploit_description) * '-'
+    sticks = len(titles.xerosploit_description) * '-'
     print(sticks)
-    print(language.xerosploit_description)
+    print(titles.xerosploit_description)
     print(sticks,'\n')
 
-def seth_banner(language):
+def seth_banner(titles):
     print(Color.white+"""
 ███████╗███████╗████████╗██╗  ██╗
 ██╔════╝██╔════╝╚══██╔══╝██║  ██║
@@ -918,12 +918,12 @@ def seth_banner(language):
 ╚════██║██╔══╝     ██║   ██╔══██║
 ███████║███████╗   ██║   ██║  ██║
 ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝""")
-    sticks = len(language.seth_description) * '-'
+    sticks = len(titles.seth_description) * '-'
     print(sticks)
-    print(language.seth_description)
+    print(titles.seth_description)
     print(sticks,'\n')
 
-def wifiphisher_banner(language):
+def wifiphisher_banner(titles):
     print(Color.white+"""
                      _  __ _       _     _     _               
                     (_)/ _(_)     | |   (_)   | |              
@@ -933,12 +933,12 @@ def wifiphisher_banner(language):
   /___\      \_/\_/ |_|_| |_| .__/|_| |_|_|___/_| |_|\___|_|   
  /     \                    | |                                
                             |_|""")
-    sticks = len(language.wifiphisher_description) * '-'
+    sticks = len(titles.wifiphisher_description) * '-'
     print(sticks)
-    print(language.wifiphisher_description)
+    print(titles.wifiphisher_description)
     print(sticks,'\n')
 
-def sharp_banner(language):
+def sharp_banner(titles):
     print(Color.white+"""
         ||                               _______       _______
         ||                  /\          |        ?    |        ?
@@ -950,12 +950,12 @@ def sharp_banner(language):
      // ||      ||    /            \    |       \     |
     //  ||      ||   /              \   |        \    |
    //   ||      ||  /                \  |         \   |""")
-    sticks = len(language.sharp_description) * '-'
+    sticks = len(titles.sharp_description) * '-'
     print(sticks)
-    print(language.sharp_description)
+    print(titles.sharp_description)
     print(sticks,'\n')
 
-def sharp_2_banner(language):
+def sharp_2_banner(titles):
     print(Color.white+"""
         ||                               _______       _______
         ||                  /\          |        ?    |        ?
@@ -967,36 +967,36 @@ def sharp_2_banner(language):
      // ||      ||    /            \    |       \     |
     //  ||      ||   /              \   |        \    |
    //   ||      ||  /                \  |         \   |         2""")    # why is there two?
-    sticks = len(language.sharp_2_description) * '-'
+    sticks = len(titles.sharp_2_description) * '-'
     print(sticks)
-    print(language.sharp_2_description)
+    print(titles.sharp_2_description)
     print(sticks,'\n')
 
-def eviltwinframework_banner(language):
+def eviltwinframework_banner(titles):
     print(Color.white+"""
     ______      _ ________         _       ______                                             __  
    / ____/   __(_) /_  __/      __(_)___  / ____/________ _____ ___  ___ _      ______  _____/ /__
   / __/ | | / / / / / / | | /| / / / __ \/ /_  / ___/ __ `/ __ `__ \/ _ \ | /| / / __ \/ ___/ //_/
  / /___ | |/ / / / / /  | |/ |/ / / / / / __/ / /  / /_/ / / / / / /  __/ |/ |/ / /_/ / /  / ,<   
 /_____/ |___/_/_/ /_/   |__/|__/_/_/ /_/_/   /_/   \__,_/_/ /_/ /_/\___/|__/|__/\____/_/  /_/|_|""")
-    sticks = len(language.eviltwinframework_description) * '-'
+    sticks = len(titles.eviltwinframework_description) * '-'
     print(sticks)
-    print(language.eviltwinframework_description)
+    print(titles.eviltwinframework_description)
     print(sticks,'\n')
 
-def the_rogue_toolkit_banner(language):
+def the_rogue_toolkit_banner(titles):
     print(Color.white+"""
  _____ _       _____                 _____         _   _ _   
 |_   _| |_ ___| __  |___ ___ _ _ ___|_   _|___ ___| |_|_| |_ 
   | | |   | -_|    -| . | . | | | -_| | | | . | . | '_| |  _|
   |_| |_|_|___|__|__|___|_  |___|___| |_| |___|___|_,_|_|_|  
                         |___|""")
-    sticks = len(language.theroguetoolkit_description) * '-'
+    sticks = len(titles.theroguetoolkit_description) * '-'
     print(sticks)
-    print(language.theroguetoolkit_description)
+    print(titles.theroguetoolkit_description)
     print(sticks,'\n')
 
-def sitebroker_banner(language):
+def sitebroker_banner(titles):
     print(Color.green+"""
 
   /$$$$$$  /$$   /$$               /$$$$$$$                      /$$
@@ -1007,12 +1007,12 @@ def sitebroker_banner(language):
  /$$  \ $$| $$  | $$ /$$| $$_____/| $$  \ $$| $$      | $$  | $$| $$_  $$ | $$_____/| $$
 |  $$$$$$/| $$  |  $$$$/|  $$$$$$$| $$$$$$$/| $$      |  $$$$$$/| $$ \  $$|  $$$$$$$| $$
  \______/ |__/   \___/   \_______/|_______/ |__/       \______/ |__/  \__/ \_______/|__/"""+Color.white)
-    sticks = len(language.sitebroker_description) * '-'
+    sticks = len(titles.sitebroker_description) * '-'
     print(sticks)
-    print(language.sitebroker_description)
+    print(titles.sitebroker_description)
     print(sticks,'\n')
 
-def websploit_banner(language):
+def websploit_banner(titles):
     print(Color.white+"""
  __      __          __                      ___               __
 /\ \  __/\ \        /\ \                    /\_ \           __/\ \__
@@ -1023,12 +1023,12 @@ def websploit_banner(language):
     '\/__//__/  \/____/ \/___/  \/___/  \ \ \/ \/____/\/___/  \/_/\/__/
                                          \ \_\ 
                                           \/_/""")
-    sticks = len(language.websploit_description) * '-'
+    sticks = len(titles.websploit_description) * '-'
     print(sticks)
-    print(language.websploit_description)
+    print(titles.websploit_description)
     print(sticks,'\n')
 
-def wpsploit_banner(language):
+def wpsploit_banner(titles):
     print(Color.white+"""
  __      ____________  _________       __          __   __  
 /  \    /  \______   \/   _____/_____ |  |   ____ |__|_/  |__ 
@@ -1036,70 +1036,70 @@ def wpsploit_banner(language):
  \        / |    |    /        \  |_) |  |_(  (_) )  | |  |
   \__/\  /  |____|   /_______  /   __/|____/\____/|__| |__|
        \/                    \/|__|""")
-    sticks = len(language.wpsploit_description) * '-'
+    sticks = len(titles.wpsploit_description) * '-'
     print(sticks)
-    print(language.wpsploit_description)
+    print(titles.wpsploit_description)
     print(sticks,'\n')
 
-def zoom_banner(language):
+def zoom_banner(titles):
     print(Color.yellow+"""
  ____                
 /_  / ___  ___  ____ 
  / /_/ _ \/ _ \/    \ 
 /___/\___/\___/_/_/_/"""+Color.white)
-    sticks = len(language.zoom_description) * '-'
+    sticks = len(titles.zoom_description) * '-'
     print(sticks)
-    print(language.zoom_description)
+    print(titles.zoom_description)
     print(sticks,'\n')
 
-def nosqlmap_banner(language):
+def nosqlmap_banner(titles):
     print(Color.white+"""
  _  _     ___  ___  _    __  __           
 | \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ 
 | .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\ 
 |_|\_\___/___/\__\_\____|_|  |_\__,_| .__/
                                     |_|""")
-    sticks = len(language.nosqlmap_description) * '-'
+    sticks = len(titles.nosqlmap_description) * '-'
     print(sticks)
-    print(language.nosqlmap_description)
+    print(titles.nosqlmap_description)
     print(sticks,'\n')
 
-def sqlcake_banner(language):
+def sqlcake_banner(titles):
     print(Color.white+"""
  _________________________________
 /                                 \ 
      sql auto exploitation kit
 \_________________________________/""")                   # 100000/10 ui design  KEKW
-    sticks = len(language.sqlcake_description) * '-'
+    sticks = len(titles.sqlcake_description) * '-'
     print(sticks)
-    print(language.sqlcake_description)
+    print(titles.sqlcake_description)
     print(sticks,'\n')
 
-def bsqlinjector_banner(language):
+def bsqlinjector_banner(titles):
     print(Color.white+"""
  _____ _____ _____ __    _       _         _           
 | __  |   __|     |  |  |_|___  |_|___ ___| |_ ___ ___ 
 | __ -|__   |  |  |  |__| |   | | | -_|  _|  _| . |  _|
 |_____|_____|__  _|_____|_|_|_|_| |___|___|_| |___|_|  
                |__|           |___|""")
-    sticks = len(language.bsqlinjector_description) * '-'
+    sticks = len(titles.bsqlinjector_description) * '-'
     print(sticks)
-    print(language.bsqlinjector_description)
+    print(titles.bsqlinjector_description)
     print(sticks,'\n')
 
-def xxeinjector_banner(language):
+def xxeinjector_banner(titles):
     print(Color.white+"""
  __ __ __ __ _____ _       _         _           
 |  |  |  |  |   __|_|___  |_|___ ___| |_ ___ ___ 
 |-   -|-   -|   __| |   | | | -_|  _|  _| . |  _|
 |__|__|__|__|_____|_|_|_|_| |___|___|_| |___|_|  
                         |___|""")
-    sticks = len(language.xxeinjector_description) * '-'
+    sticks = len(titles.xxeinjector_description) * '-'
     print(sticks)
-    print(language.xxeinjector_description)
+    print(titles.xxeinjector_description)
     print(sticks,'\n')
 
-def badmod_banner(language):
+def badmod_banner(titles):
     print(Color.white+"""  
                          __________
                       .~#########;;;~.
@@ -1123,25 +1123,25 @@ X  \...X     @#%,.@   |# # # % ; ; ;,|   @#%,.@     X.../  X
               '           @#%,.@                   ,.
                           
                           BadMod""")
-    sticks = len(language.badmod_description) * '-'
+    sticks = len(titles.badmod_description) * '-'
     print(sticks)
-    print(language.badmod_description)
+    print(titles.badmod_description)
     print(sticks,'\n')
 
 
-def roxysploit_banner(language):
+def roxysploit_banner(titles):
     print(Color.white+"""
                          _     _ _   
  ___ ___ _ _ _ _ ___ ___| |___|_| |_ 
 |  _| . |_'_| | |_ -| . | | . | |  _|
 |_| |___|_,_|_  |___|  _|_|___|_|_|  
             |___|   |_|""")
-    sticks = len(language.roxysploit_description) * '-'
+    sticks = len(titles.roxysploit_description) * '-'
     print(sticks)
-    print(language.roxysploit_description)
+    print(titles.roxysploit_description)
     print(sticks,'\n')
 
-def lunar_banner(language):
+def lunar_banner(titles):
     print(Color.green+"""
 
       :::       :::    ::: ::::    :::     :::     :::::::::    
@@ -1150,12 +1150,12 @@ def lunar_banner(language):
    +#+       +#+    +:+ +#+ +:+ +#+ +#++:++#++: +#++:++#:       
   +#+       +#+    +#+ +#+  +#+#+# +#+     +#+ +#+    +#+       
  #+#       #+#    #+# #+#   #+#+# #+#     #+# #+#    #+#"""+Color.white)
-    sticks = len(language.lunar_description) * '-'
+    sticks = len(titles.lunar_description) * '-'
     print(sticks)
-    print(language.lunar_description)
+    print(titles.lunar_description)
     print(sticks,'\n')
 
-def autordpwn_banner(language):
+def autordpwn_banner(titles):
     print(Color.white+"""
     ___          __       _________ _________ ________
   /  _  \  __ __|  |_ ___ \______   \_______  \______  \  _  ___ ___
@@ -1163,12 +1163,12 @@ def autordpwn_banner(language):
 /  /___\  \  |  |  |  (_)  |   |    \| |____/  |   | \        /   |   \\
 \  _______/_____/__|\_____/|___|__  /_________/|___|  \__/\__/|___|_  /
  \/                               \/""")
-    sticks = len(language.autordpwn_description) * '-'
+    sticks = len(titles.autordpwn_description) * '-'
     print(sticks)
-    print(language.autordpwn_description)
+    print(titles.autordpwn_description)
     print(sticks,'\n')
 
-def expliot_banner(language):
+def expliot_banner(titles):
     print(Color.white+"""
      __  __      _ _       _   
   ___\ \/ /_ __ | (_) ___ | |_ 
@@ -1176,24 +1176,24 @@ def expliot_banner(language):
 |  __//  \| |_) | | | (_) | |_ 
  \___/_/\_\ .__/|_|_|\___/ \__|
            |_|""")
-    sticks = len(language.expliot_description) * '-'
+    sticks = len(titles.expliot_description) * '-'
     print(sticks)
-    print(language.expliot_description)
+    print(titles.expliot_description)
     print(sticks,'\n')
 
-def rootos_banner(language):
+def rootos_banner(titles):
     print(Color.white+"""
                   _    ___  ____  
   _ __ ___   ___ | |_ / _ \/ ___| 
  | '__/ _ \ / _ \| __| | | \___ \ 
  | | | (_) | (_) | |_| |_| |___) |
  |_|  \___/ \___/ \__|\___/|____/""")
-    sticks = len(language.rootos_desscription) * '-'
+    sticks = len(titles.rootos_desscription) * '-'
     print(sticks)
-    print(language.rootos_desscription)
+    print(titles.rootos_desscription)
     print(sticks,'\n')
 
-def pure_blood_banner(language):
+def pure_blood_banner(titles):
     print(Color.red+"""
 
  ██▓███   █    ██  ██▀███  ▓█████  ▄▄▄▄    ██▓     ▒█████   ▒█████  ▓█████▄
@@ -1206,36 +1206,36 @@ def pure_blood_banner(language):
 ░░        ░░░ ░ ░   ░░   ░    ░    ░    ░   ░ ░   ░ ░ ░ ▒  ░ ░ ░ ▒   ░ ░  ░
             ░        ░        ░  ░ ░          ░  ░    ░ ░      ░ ░     ░
                                         ░                            ░"""+Color.white)
-    sticks = len(language.pure_blood_description) * '-'
+    sticks = len(titles.pure_blood_description) * '-'
     print(sticks)
-    print(language.pure_blood_description)
+    print(titles.pure_blood_description)
     print(sticks,'\n')
 
-def termineter_banner(language):
+def termineter_banner(titles):
     print(Color.white+""" 
   ______                    _            __
  /_  __/__  _________ ___  (_)___  ___  / /____  _____
   / / / _ \/ ___/ __ `__ \/ / __ \/ _ \/ __/ _ \/ ___/
  / / /  __/ /  / / / / / / / / / /  __/ /_/  __/ /
 /_/  \___/_/  /_/ /_/ /_/_/_/ /_/\___/\__/\___/_/""")
-    sticks = len(language.termineter_description) * '-'
+    sticks = len(titles.termineter_description) * '-'
     print(sticks)
-    print(language.termineter_description)
+    print(titles.termineter_description)
     print(sticks,'\n')
 
-def autosploit_banner(language):
+def autosploit_banner(titles):
     print(Color.red+"""
  _____     _       _____     _     _ _ 
 |  _  |_ _| |_ ___|   __|___| |___|_| |_
 |     | | |  _| . |__   | . | | . | |  _|
 |__|__|___|_| |___|_____|  _|_|___|_|_|
                         |_|"""+Color.white)
-    sticks = len(language.autosploit_description) * '-'
+    sticks = len(titles.autosploit_description) * '-'
     print(sticks)
-    print(language.autosploit_description)
+    print(titles.autosploit_description)
     print(sticks,'\n')
 
-def smod_banner(language):
+def smod_banner(titles):
     print(Color.white+"""
  _______ 
 < SMOD >
@@ -1245,23 +1245,23 @@ def smod_banner(language):
             (__)\       )\/\ 
              U  ||----w |
                 ||     ||""")
-    sticks = len(language.smod_description) * '-'     # god is dead, we killed him.
+    sticks = len(titles.smod_description) * '-'     # god is dead, we killed him.
     print(sticks)                                     # in genuine honesty, what the fuck is this logo?
-    print(language.smod_description)
+    print(titles.smod_description)
     print(sticks,'\n')
 
-def thefatrat_banner(language):
+def thefatrat_banner(titles):
     print(Color.green+"""
  _____ _       _____     _   _____     _   
 |_   _| |_ ___|   __|___| |_| __  |___| |_ 
   | | |   | -_|   __| .'|  _|    -| .'|  _|
   |_| |_|_|___|__|  |__,|_| |__|__|__,|_|"""+Color.white)
-    sticks = len(language.thefatrat_description) * '-'
+    sticks = len(titles.thefatrat_description) * '-'
     print(sticks)
-    print(language.thefatrat_description)
+    print(titles.thefatrat_description)
     print(sticks,'\n')
 
-def exploit_pack_banner(language):
+def exploit_pack_banner(titles):
     print(Color.white+"""
  _____            _       _ _   ____            _    
 | ____|_  ___ __ | | ___ (_) |_|  _ \ __ _  ___| | __
@@ -1269,24 +1269,24 @@ def exploit_pack_banner(language):
 | |___ >  <| |_) | | (_) | | |_|  __/ (_| | (__|   < 
 |_____/_/\_\ .__/|_|\___/|_|\__|_|   \__,_|\___|_|\_\\
            |_|""")
-    sticks = len(language.exploit_pack_description) * '-'
+    sticks = len(titles.exploit_pack_description) * '-'
     print(sticks)
-    print(language.exploit_pack_description)
+    print(titles.exploit_pack_description)
     print(sticks,'\n')
 
-def mimikittenz_banner(language):
+def mimikittenz_banner(titles):
     print(Color.white+"""
 
        _       _ _   _ _   _               
  _____|_|_____|_| |_|_| |_| |_ ___ ___ ___ 
 |     | |     | | '_| |  _|  _| -_|   |- _|
 |_|_|_|_|_|_|_|_|_,_|_|_| |_| |___|_|_|___|""")
-    sticks = len(language.mimikittenz_description) * '-'
+    sticks = len(titles.mimikittenz_description) * '-'
     print(sticks)
-    print(language.mimikittenz_description)
+    print(titles.mimikittenz_description)
     print(sticks,'\n')
 
-def ezsploit_banner(language):
+def ezsploit_banner(titles):
     print(Color.white+"""
                      ______
                   .-        -.
@@ -1300,24 +1300,24 @@ def ezsploit_banner(language):
 (_)@8@8{}<_____________________________________________>
        )_/         \ IIIIII /                    :::::
       (@            --------                        ::""")
-    sticks = len(language.ezsploit_description) * '-'
+    sticks = len(titles.ezsploit_description) * '-'
     print(sticks)
-    print(language.ezsploit_description)
+    print(titles.ezsploit_description)
     print(sticks,'\n')
 
-def auto_root_exploit_banner(language):
+def auto_root_exploit_banner(titles):
     print(Color.white+"""
  _____     _       _____         _   _____         _     _ _
 |  _  |_ _| |_ ___| __  |___ ___| |_|   __|_ _ ___| |___|_| |_
 |     | | |  _| . |    -| . | . |  _|   __|_'_| . | | . | |  _|
 |__|__|___|_| |___|__|__|___|___|_| |_____|_,_|  _|_|___|_|_|
                                               |_|""")
-    sticks = len(language.auto_root_exploit_description) * '-'
+    sticks = len(titles.auto_root_exploit_description) * '-'
     print(sticks)
-    print(language.auto_root_exploit_description)
+    print(titles.auto_root_exploit_description)
     print(sticks,'\n')
 
-def ahmyth_android_rat_banner(language):
+def ahmyth_android_rat_banner(titles):
     print(Color.white+"""   
     _    _     __  __       _   _     
    / \  | |__ |  \/  |_   _| |_| |__
@@ -1325,24 +1325,24 @@ def ahmyth_android_rat_banner(language):
  / ___ \| | | | |  | | |_| | |_| | | |
 /_/   \_\_| |_|_|  |_|\__, |\__|_| |_|
                       |___/""")
-    sticks = len(language.ahmyth_android_rat_description) * '-'
+    sticks = len(titles.ahmyth_android_rat_description) * '-'
     print(sticks)
-    print(language.ahmyth_android_rat_description)
+    print(titles.ahmyth_android_rat_description)
     print(sticks,'\n')
 
-def exploit_framework_banner(language):
+def exploit_framework_banner(titles):
     print(Color.white+"""
  _____         _     _ _   _____                                 _
 |   __|_ _ ___| |___|_| |_|   __|___ ___ _____ ___ _ _ _ ___ ___| |_
 |   __|_'_| . | | . | |  _|   __|  _| .'|     | -_| | | | . |  _| '_|
 |_____|_,_|  _|_|___|_|_| |__|  |_| |__,|_|_|_|___|_____|___|_| |_,_|
           |_|""")
-    sticks = len(language.expliot_framework_description) * '-'
+    sticks = len(titles.expliot_framework_description) * '-'
     print(sticks)
-    print(language.expliot_framework_description)
+    print(titles.expliot_framework_description)
     print(sticks,'\n')
 
-def winroothelper_banner(language):
+def winroothelper_banner(titles):
     print(Color.green+"""
  _ _ _ _     _____         _           
 | | | |_|___| __  |___ ___| |_         
@@ -1353,12 +1353,12 @@ def winroothelper_banner(language):
   |     | -_| | . | -_|  _|
   |__|__|___|_|  _|___|_|  
                       |_|"""+Color.white)
-    sticks = len(language.winroothelper_description) * '-'
+    sticks = len(titles.winroothelper_description) * '-'
     print(sticks)
-    print(language.winroothelper_description)
+    print(titles.winroothelper_description)
     print(sticks,'\n')
 
-def metasploit_banner(language):
+def metasploit_banner(titles):
     print(Color.white+"""
  _                                                    _
 / \\    /\\         __                         _   __  /_/ __
@@ -1366,12 +1366,12 @@ def metasploit_banner(language):
 | | \/| | | ___\\ |- -|   /\    / __\\ | -__/ | || | || | |- -|
 |_|   | | | _|__  | |_  / -\ __\ \   | |    | | \__/| |  | |_
       |/  |____/  \___\\/ /\ \\\___/   \/     \__|    |_\\  \\___\\ """)
-    sticks = len(language.metasploit_description) * '-'
+    sticks = len(titles.metasploit_description) * '-'
     print(sticks)
-    print(language.metasploit_description)
+    print(titles.metasploit_description)
     print(sticks,'\n')
 
-def zerodoor_banner(language):
+def zerodoor_banner(titles):
     print(Color.white+"""
  _____________________________________________________________ 
 |                                                   ^^^^^^^^\ |
@@ -1384,12 +1384,12 @@ def zerodoor_banner(language):
 |                                          ((   )     /====|  |
 |                                           \  <.__._-      \ |
 |___________________________________________ <//___.         ||""")   #      Doh!
-    sticks = len(language.zerodoor_description) * '-'                 # El Sharto was here
+    sticks = len(titles.zerodoor_description) * '-'                 # El Sharto was here
     print(sticks)                                                     # sorry, that joke fucking sucked didnt it?
-    print(language.zerodoor_description)
+    print(titles.zerodoor_description)
     print(sticks,'\n')
 
-def terminator_banner(language):
+def terminator_banner(titles):
     print(Color.red+"""
 _________ _______  _______  _______ _________ _        _______ _________ _______  _______ 
 \__   __/(  ____ \(  ____ )(       )\__   __/( (    /|(  ___  )\__   __/(  ___  )(  ____ )
@@ -1399,12 +1399,12 @@ _________ _______  _______  _______ _________ _        _______ _________ _______
    | |   | (      | (\ (   | |   | |   | |   | | \   || (   ) |   | |   | |   | || (\ (   
    | |   | (____/\| ) \ \__| )   ( |___) (___| )  \  || )   ( |   | |   | (___) || ) \ \__
    )_(   (_______/|/   \__/|/     \|\_______/|/    )_)|/     \|   )_(   (_______)|/   \__/"""+Color.white)
-    sticks = len(language.terminator_description) * '-'
+    sticks = len(titles.terminator_description) * '-'
     print(sticks)
-    print(language.terminator_description)
+    print(titles.terminator_description)
     print(sticks,'\n')
 
-def winpayload_banner(language):
+def winpayload_banner(titles):
     print(Color.red+"""
  _       ___       ____              __                __    
 | |     / (_)___  / __ \\____ ___  __/ /___  ____ _____/ /____
@@ -1412,12 +1412,12 @@ def winpayload_banner(language):
 | |/ |/ / / / / / ____/ /_/ / /_/ / / /_/ / /_/ / /_/ (__  ) 
 |__/|__/_/_/ /_/_/    \__,_/\\__, /_/\\____/\\__,_/\\__,_/____/  
                            /____/"""+Color.white)
-    sticks = len(language.winpayloads_description) * '-'
+    sticks = len(titles.winpayloads_description) * '-'
     print(sticks)
-    print(language.winpayloads_description)
+    print(titles.winpayloads_description)
     print(sticks,'\n')
 
-def saint_banner(language):
+def saint_banner(titles):
     print(Color.red+"""
 
   pd'      `bq        db      `7MMF'`7MN.   `7MF'MMP\\"\\"MM\\"\\"YMM
@@ -1429,35 +1429,35 @@ YM. L.   I8  ,M9  A'     VML    MM    M     YMM       MM
  Mb M9mmmP'  dM .AMA.   .AMMA..JMML..JML.    YM     .JMML.
   Yq.      .pY
       ``   '' """+Color.white)
-    sticks = len(language.saint_description) * '-'
+    sticks = len(titles.saint_description) * '-'
     print(sticks)
-    print(language.saint_description)
+    print(titles.saint_description)
     print(sticks,'\n')
 
-def beelogger_banner(language):
+def beelogger_banner(titles):
     print(Color.yellow+"""
          .' '. I BEE YOU  __
 .        .   .          \\(__\\_/             
  .         .         . -{{#(|8)
    ' .  . ' ' .  . '    /(__/ \\"""+Color.white)
-    sticks = len(language.beelogger_description) * '-'
+    sticks = len(titles.beelogger_description) * '-'
     print(sticks)
-    print(language.beelogger_description)
+    print(titles.beelogger_description)
     print(sticks,'\n')
 
-def hacktheworld_banner(language):
+def hacktheworld_banner(titles):
     print(Color.green+"""
  _   _            _      _____ _           __        __         _     _ 
 | | | | __ _  ___| | __ |_   _| |__   ___  \ \      / /__  _ __| | __| |
 | |_| |/ _` |/ __| |/ /   | | | '_ \ / _ \  \ \ /\ / / _ \| '__| |/ _` |
 |  _  | (_| | (__|   <    | | | | | |  __/   \ V  V / (_) | |  | | (_| |
 |_| |_|\__,_|\___|_|\_\   |_| |_| |_|\___|    \_/\_/ \___/|_|  |_|\__,_|"""+Color.white)
-    sticks = len(language.hacktheworld_dewcription) * '-'
+    sticks = len(titles.hacktheworld_dewcription) * '-'
     print(sticks)
-    print(language.hacktheworld_dewcription)
+    print(titles.hacktheworld_dewcription)
     print(sticks,'\n')
 
-def hatkey_banner(language):
+def hatkey_banner(titles):
     print(Color.white+"""
  _______ 
 < HatKey >
@@ -1467,12 +1467,12 @@ def hatkey_banner(language):
             (__)\       )\/\ 
              U  ||----w | 
                 ||     ||""")
-    sticks = len(language.hatkey_description) * '-'           # HE`S FUCKING BACK AGAIN!??!?!?
+    sticks = len(titles.hatkey_description) * '-'           # HE`S FUCKING BACK AGAIN!??!?!?
     print(sticks)                                             # Whyyyy this fucking horse???
-    print(language.hatkey_description) 
+    print(titles.hatkey_description) 
     print(sticks,'\n')
 
-def trolo_banner(language):
+def trolo_banner(titles):
     print(Color.white+"""
 
                +(\\
@@ -1482,12 +1482,12 @@ def trolo_banner(language):
    |_ | me  |__|       | |  |    /| \_/|| |_/\| \_/|
   (  )|_____(  )       \\_/  \\_/\\_\\\____/\\____/\\____/
   (__)      (__)         KEEPING IT SIMPLE!""")
-    sticks = len(language.trolo_description) * '-'
+    sticks = len(titles.trolo_description) * '-'
     print(sticks)
-    print(language.trolo_description)
+    print(titles.trolo_description)
     print(sticks,'\n')
 
-def getwin_banner(languages):
+def getwin_banner(titless):
     print(Color.white+"""
      _______                _  _  _  _         
     (_______)          _   (_)(_)(_)(_)        
@@ -1497,58 +1497,58 @@ def getwin_banner(languages):
      \_____/ |_____)   \__) \_____/ |_||_| |_|v1.2 
 
 .:.: FUD win32 payload generator and listener :.:.""")
-    sticks = len(languages.getwin_description) * '-'
+    sticks = len(titless.getwin_description) * '-'
     print(sticks)
-    print(languages.getwin_description)
+    print(titless.getwin_description)
     print(sticks,'\n')
 
-def dkmc_banner(language):
+def dkmc_banner(titles):
     print(Color.white+"""
      |\      _,,,---,,_
     /,`.-'`'    -.  ;-;;,_
    |,4-  ) )-,_..;\ (  `'-'
   '---''(_/--'  `-'\_)    The sleepy cat""")
-    sticks = len(language.dkmc_description) * '-'
+    sticks = len(titles.dkmc_description) * '-'
     print(sticks)
-    print(language.dkmc_description)
+    print(titles.dkmc_description)
     print(sticks,'\n')
 
-def parat_banner(language):
+def parat_banner(titles):
     print(Color.blue+"""
   ____                 _   
  |  _ \\ __ _ _ __ __ _| |_ 
  | |_) / _` | '__/ _` | __|
  |  __/ (_| | | | (_| | |_ 
  |_|   \\__,_|_|  \\__,_|\\__|"""+Color.white)
-    sticks = len(language.parat_description) * '-'
+    sticks = len(titles.parat_description) * '-'
     print(sticks)
-    print(language.parat_description)
+    print(titles.parat_description)
     print(sticks,'\n')
 
-def mkvenom_banner(language):
+def mkvenom_banner(titles):
     print(Color.yellow+"""
          __                                  __ 
   __ _  / /___  _____ ___  ___  __ _    ___ / / 
  /  ' \\/  '_/ |/ / -_) _ \/ _ \/  ' \\_ (_-</ _ \\
 /_/_/_/_/\\_\\|___/\\__/_//_/\\___/_/_/_(_)___/_//_/"""+Color.white)
-    sticks = len(language.mkvenom_description) * '-'
+    sticks = len(titles.mkvenom_description) * '-'
     print(sticks)
-    print(language.mkvenom_description)
+    print(titles.mkvenom_description)
     print(sticks,'\n')
 
-def venom_banner(language):
+def venom_banner(titles):
     print(Color.white+"""
  __    _ ______  ____   _  _____  ____    __  
 \  \  //|   ___||    \ | |/     \|    \  /  |
  \  \// |   ___||     \| ||     ||     \/   |
   \__/  |______||__/\____|\_____/|__/\__/|__|
    |S|h|e|l|l|c|0|d|e| |G|e|n|e|r|a|t|0|r|""")
-    sticks = len(language.venom_description) * '-'
+    sticks = len(titles.venom_description) * '-'
     print(sticks)
-    print(language.venom_description)
+    print(titles.venom_description)
     print(sticks,'\n')
 
-def cloak_banner(language):
+def cloak_banner(titles):
     print(Color.white+"""
 _________ .__                __    
 \_   ___ \|  |   _________  |  | __
@@ -1556,36 +1556,36 @@ _________ .__                __
 \     \___|  |_(  <_> ) __ \|    < 
  \______  /____/\____(____  /__|_ \ 
         \/                \/     \/""")
-    sticks = len(language.cloak_description) * '-'
+    sticks = len(titles.cloak_description) * '-'
     print(sticks)
-    print(language.cloak_description)
+    print(titles.cloak_description)
     print(sticks,'\n')
 
-def avoid_banner(language):
+def avoid_banner(titles):
     print(Color.white+"""
  _____     _               _     _ _   _____ _____ _____             _         
 |     |___| |_ ___ ___ ___| |___|_| |_|  _  |  |  |   __|_ _ ___ ___|_|___ ___ 
 | | | | -_|  _| .'|_ -| . | | . | |  _|     |  |  |   __| | | .'|_ -| | . |   |
 |_|_|_|___|_| |__,|___|  _|_|___|_|_| |__|__|\___/|_____|\_/|__,|___|_|___|_|_|
                       |_|""")
-    sticks = len(language.avoid_description) * '-'
+    sticks = len(titles.avoid_description) * '-'
     print(sticks)
-    print(language.avoid_description)
+    print(titles.avoid_description)
     print(sticks,'\n')
 
-def avet_banner(language):
+def avet_banner(titles):
     print(Color.white+""" 
     ___     _______ _____ 
    / \ \   / / ____|_   _|
   / _ \ \ / /|  _|   | |  
  / ___ \ V / | |___  | |  
 /_/   \_\_/  |_____| |_|""")
-    sticks = len(language.avet_description) * '-'
+    sticks = len(titles.avet_description) * '-'
     print(sticks)
-    print(language.avet_description)
+    print(titles.avet_description)
     print(sticks,'\n')
 
-def nxcrypt_banner(language):
+def nxcrypt_banner(titles):
     print(Color.blue+"""
 d8b   db db    db  .o88b. d8888b. db    db d8888b. d888888b
 888o  88 `8b  d8' d8P  Y8 88  `8D `8b  d8' 88  `8D `~~88~~'
@@ -1594,23 +1594,23 @@ d8b   db db    db  .o88b. d8888b. db    db d8888b. d888888b
 88  V888 .8P  Y8. Y8b  d8 88 `88.    88    88         88
 VP   V8P YP    YP  `Y88P' 88   YD    YP    88         YP
                                         (python backdoor framework)"""+Color.white)
-    sticks = len(language.nxcrypt_description) * '-'
+    sticks = len(titles.nxcrypt_description) * '-'
     print(sticks)
-    print(language.nxcrypt_description)
+    print(titles.nxcrypt_description)
     print(sticks,'\n')
 
-def slowloris_banner(language):
+def slowloris_banner(titles):
     print(Color.white+"""
  _____ _           __            _     
 |   __| |___ _ _ _|  |   ___ ___|_|___ 
 |__   | | . | | | |  |__| . |  _| |_ -|
 |_____|_|___|_____|_____|___|_| |_|___|""")
-    sticks = len(language.slowloris_description) * '-'
+    sticks = len(titles.slowloris_description) * '-'
     print(sticks)
-    print(language.slowloris_description)
+    print(titles.slowloris_description)
     print(sticks,'\n')
 
-def zambie_banner(language):
+def zambie_banner(titles):
     print(Color.yellow+"""
 
  /$$$$$$$$  /$$$$$$                /$$      /$$$$$$ /$$$$$$$$
@@ -1621,12 +1621,12 @@ def zambie_banner(language):
    /$$/    | $$  | $$| $$ | $$ | $$| $$  | $$ | $$  | $$
   /$$$$$$$$| $$  | $$| $$ | $$ | $$| $$$$$$$//$$$$$$| $$$$$$$$
  |________/|__/  |__/|__/ |__/ |__/|_______/|______/|________/"""+Color.white)
-    sticks = len(language.zambie_description) * '-'
+    sticks = len(titles.zambie_description) * '-'
     print(sticks)
-    print(language.zambie_description)
+    print(titles.zambie_description)
     print(sticks,'\n')
 
-def ufonet_banner(language):
+def ufonet_banner(titles):
     print(Color.white+"""
 888     888 8888888888 .d88888b.  888b    888          888    
 888     888 888        d88PY888b  8888b   888          888    
@@ -1636,12 +1636,12 @@ def ufonet_banner(language):
 888     888 888       888     888 888  Y88888 88888888 888    
 Y88b. .d88P 888       Y88b. .d88P 888   Y8888 Y8b.     Y88b.  
  'Y88888P'  888        'Y88888P'  888    Y888  'Y8888   'Y8888""")
-    sticks = len(language.ufonet_description) * '-'
+    sticks = len(titles.ufonet_description) * '-'
     print(sticks)
-    print(language.ufonet_description)
+    print(titles.ufonet_description)
     print(sticks,'\n')
 
-def memcrashed_banner(language):
+def memcrashed_banner(titles):
     print(Color.white+"""
 ███╗   ███╗███████╗███╗   ███╗ ██████╗██████╗  █████╗ ███████╗██╗  ██╗███████╗██████╗ 
 ████╗ ████║██╔════╝████╗ ████║██╔════╝██╔══██╗██╔══██╗██╔════╝██║  ██║██╔════╝██╔══██╗
@@ -1649,12 +1649,12 @@ def memcrashed_banner(language):
 ██║╚██╔╝██║██╔══╝  ██║╚██╔╝██║██║     ██╔══██╗██╔══██║╚════██║██╔══██║██╔══╝  ██║  ██║
 ██║ ╚═╝ ██║███████╗██║ ╚═╝ ██║╚██████╗██║  ██║██║  ██║███████║██║  ██║███████╗██████╔╝
 ╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═════╝""")
-    sticks = len(language.memcrashed_description) * '-'
+    sticks = len(titles.memcrashed_description) * '-'
     print(sticks)
-    print(language.memcrashed_description)
+    print(titles.memcrashed_description)
     print(sticks,'\n')
 
-def fsociety_banner(language):
+def fsociety_banner(titles):
     print(Color.yellow+"""
 d88888b .d8888.  .d88b.   .o88b. d888888b d88888b d888888b db    db
 88'     88'  YP .8P  Y8. d8P  Y8   `88'   88         88    `8b  d8'
@@ -1662,36 +1662,36 @@ d88888b .d8888.  .d88b.   .o88b. d888888b d88888b d888888b db    db
 88        `Y8b. 88    88 8b         88    88         88       88
 88      db   8D `8b  d8' Y8b  d8   .88.   88.        88       88
 YP      `8888Y'  `Y88P'   `Y88P' Y888888P Y88888P    YP       YP"""+Color.white)
-    sticks = len(language.fsociety_description) * '-'
+    sticks = len(titles.fsociety_description) * '-'
     print(sticks)
-    print(language.fsociety_description)
+    print(titles.fsociety_description)
     print(sticks,'\n')
 
-def malicious_banner(language):
+def malicious_banner(titles):
     print(Color.white+"""
  __  __       _ _      _                 
 |  \/  | __ _| (_) ___(_) ___  _   _ ___ 
 | |\/| |/ _` | | |/ __| |/ _ \| | | / __|
 | |  | | (_| | | | (__| | (_) | |_| \__ \ 
 |_|  |_|\__,_|_|_|\___|_|\___/ \__,_|___/""")
-    sticks = len(language.malicious_description) * '-'
+    sticks = len(titles.malicious_description) * '-'
     print(sticks)
-    print(language.malicious_description)
+    print(titles.malicious_description)
     print(sticks,'\n')
 
-def tool_x_banner(language):
+def tool_x_banner(titles):
     print(Color.yellow+"""
  _____           _     __  __
 |_   _|__   ___ | |    \ \/ /
   | |/ _ \ / _ \| |_____\  / 
   | | (_) | (_) | |_____/  \ 
   |_|\___/ \___/|_|    /_/\_\ """+Color.white)
-    sticks = len(language.tool_x_description) * '-'
+    sticks = len(titles.tool_x_description) * '-'
     print(sticks)
-    print(language.tool_x_description)
+    print(titles.tool_x_description)
     print(sticks,'\n')
 
-def katoolin_banner(language):
+def katoolin_banner(titles):
     print(Color.white+"""
 
 $$\   $$\             $$\                         $$\ $$\           
@@ -1702,23 +1702,23 @@ $$  $$<    $$$$$$$ |  Kali linux tools installer |$$ |$$ |$$ |  $$ |
 $$ |\$$\  $$  __$$ |  $$ |$$\ $$ |  $$ |$$ |  $$ |$$ |$$ |$$ |  $$ |
 $$ | \$$\ \$$$$$$$ |  \$$$$  |\$$$$$$  |\$$$$$$  |$$ |$$ |$$ |  $$ |
 \__|  \__| \_______|   \____/  \______/  \______/ \__|\__|\__|  \__|""")
-    sticks = len(language.katoolin_description) * '-'
+    sticks = len(titles.katoolin_description) * '-'
     print(sticks)
-    print(language.katoolin_description)
+    print(titles.katoolin_description)
     print(sticks,'\n')
 
-def intrec_pack_banner(language):
+def intrec_pack_banner(titles):
     print(Color.green+"""
  _____ _____ _____ _____ _____ _____     _____ _____ _____ _____ 
 |     |   | |_   _| __  |   __|     |___|  _  |  _  |     |  |  |
 |-   -| | | | | | |    -|   __|   --|___|   __|     |   --|    -|
 |_____|_|___| |_| |__|__|_____|_____|   |__|  |__|__|_____|__|__|"""+Color.white)
-    sticks = len(language.intrec_pack_description) * '-'
+    sticks = len(titles.intrec_pack_description) * '-'
     print(sticks)
-    print(language.intrec_pack_description)
+    print(titles.intrec_pack_description)
     print(sticks,'\n')
 
-def ptf_banner(language):
+def ptf_banner(titles):
     print(Color.red+"""
                      ______  __ __    ___
                     |      T|  T  T  /  _]
@@ -1741,8 +1741,8 @@ l__j   l_____jl__j__j  l__j  l_____j  \___j  l__j  l_____jl__j\_j  \___j
 |   _] |    \ |  _  ||   |   ||   [_ l  `  '  !|     ||    \ |     Y
 |  T   |  .  Y|  |  ||   |   ||     T \      / l     !|  .  Y|  .  |
 l__j   l__j\_jl__j__jl___j___jl_____j  \_/\_/   \___/ l__j\_jl__j\_j"""+Color.white)
-    sticks = len(language.ptf_description) * '-'
+    sticks = len(titles.ptf_description) * '-'
     print(sticks)
-    print(language.ptf_description)
+    print(titles.ptf_description)
     print(sticks,'\n')
 # FUCKIN FINALLY, this took waaaayyyyy longer than it should of
