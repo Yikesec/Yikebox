@@ -58,14 +58,14 @@ def continue_or_not(titles):
     try:
         choice = str(input(titles.continue_or_not)).strip()
         action(titles,choice)
-        
+
         if choice[0].upper() == 'Y':
             clear()
             choose_lang(titles)
         elif choice[0].upper() == 'N':
             print(titles.exiting)
             exit()
-        elif (choice.upper() == 'HELP' or choice.upper() == 'CHANGELOG' or choice.upper() == 'ABOUT'):
+        elif choice.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             continue_or_not(titles)
         else:
             print(titles.invalid)
@@ -90,7 +90,7 @@ def choose_lang(titles):
             clear()
             Yikebox_banner(english)
             home_page(english)
-        elif (choice.upper() == "HELP" or choice.upper() ==  "CHANGELOG" or choice.upper() == "ABOUT"):
+        elif choice.upper() in {"HELP", "CHANGELOG", "ABOUT"}:
             choose_lang(titles)
         else:
             print(titles.invalid)
@@ -133,7 +133,7 @@ def home_page(titles):
             malware_bypass(titles)
         elif choice == '10':
             downloader_installer(titles)
-        elif (choice.upper() == "HELP" or choice.upper() ==  "CHANGELOG" or choice.upper() == "ABOUT"):
+        elif choice.upper() in {"HELP", "CHANGELOG", "ABOUT"}:
             home_page(titles)
         else:
             print(titles.invalid)
@@ -332,7 +332,7 @@ def info_gathering(titles):
             subdomain_analyzer_banner(titles)
             subdomain_analyzer(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             info_gathering(titles)
 
         else:
@@ -489,7 +489,7 @@ def vulner_analysis(titles):
             spectre_meldown_checker_banner(titles)
             spectre_meldown_checker(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             vulner_analysis(titles)
 
         else:
@@ -551,7 +551,7 @@ def passwd_attack(titles):
             hash_buster_banner(titles)
             hash_buster(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             passwd_attack(titles)
 
         else:
@@ -559,7 +559,7 @@ def passwd_attack(titles):
             passwd_attack(titles)
 
         continue_or_not(titles)
-    
+
     except KeyboardInterrupt:
         print(titles.exiting)
         exit()
@@ -693,7 +693,7 @@ def wireless_attack(titles):
             websploit_banner(titles)
             websploit(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             wireless_attack(titles)
 
         else:
@@ -810,7 +810,7 @@ def web_apps(titles):
             zoom_banner(titles)
             zoom(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             web_apps(titles)
 
         else:
@@ -992,7 +992,7 @@ def exploit_tools(titles):
             metasploit_banner(titles)
             metasploit(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             exploit_tools(titles)
 
         else:
@@ -1059,7 +1059,7 @@ def sniff_spoof(titles):
             seth_banner(titles)
             seth(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             sniff_spoof(titles)
 
         else:
@@ -1191,7 +1191,7 @@ def malware_bypass(titles):
             nxcrypt_banner(titles)
             nxcrypt(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             malware_bypass(titles)
 
         else:
@@ -1254,7 +1254,7 @@ def ddos_tools(titles):
             memcrashed_banner(titles)
             memcrashed(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             ddos_tools(titles)
 
         else:
@@ -1322,7 +1322,7 @@ def downloader_installer(titles):
             lunar_banner(titles)
             lunar(titles)
 
-        elif (tool.upper() == 'HELP' or tool.upper() == 'CHANGELOG' or tool.upper() == 'ABOUT'):
+        elif tool.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             downloader_installer(titles)
 
         else:

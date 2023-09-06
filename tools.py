@@ -69,7 +69,7 @@ def the_path(titles,tool):
         paths = str(input(titles.path_folder.format(tool))).strip()
         action(titles,paths)
 
-        if (paths.upper() == 'HELP' or paths.upper() == 'CHANGELOG' or paths.upper() == 'ABOUT'):
+        if paths.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
             the_path(titles,tool)
 
         elif path.exists(paths) == True:
@@ -100,10 +100,12 @@ def billcipher(titles):
             ruby = str(input(titles.installed_or_not.format('Ruby-lang'))).strip()
             action(titles,ruby)
 
-            if (git[0].upper() == 'Y' and python3[0].upper() == 'Y' and python2[0].upper() == 'Y' and ruby[0].upper() == 'Y'):
-                pass
-
-            else:
+            if (
+                git[0].upper() != 'Y'
+                or python3[0].upper() != 'Y'
+                or python2[0].upper() != 'Y'
+                or ruby[0].upper() != 'Y'
+            ):
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -140,9 +142,9 @@ def billcipher(titles):
                 else:
                     print(titles.invalid)
                     billcipher(titles)
-   
+
             print("BillCipher is no longer available on github, please contact me if there is a working fork")
-            
+
         print("BillCipher', 'NO LONGER AVAILABLE (I AM UNABLE TO FIND THE REPO OR A FORK OF IT AS IT HAS BEEN TAKEN DOWN AND NOT FORKED")
 
     except KeyboardInterrupt:
@@ -164,10 +166,7 @@ def devploit(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -198,25 +197,24 @@ def devploit(titles):
             print(titles.done.format('Devploit'))
             print(titles.note_tools.format('Devploit', 'python Devploit'))
 
+        elif path.exists('/usr/bin/pacman') == True:
+            paths = the_path(titles,'Devploit')
+            system(f"cd {paths} && sudo git clone https://github.com/zD4NI3LH/Devploit")
+            print(titles.done.format('Devploit'))
+            print(titles.note_tools.format('Devploit', 'python2 Devploit'))
+
         else:
-            if path.exists('/usr/bin/pacman') == True:
-                paths = the_path(titles,'Devploit')
-                system("cd {} && sudo git clone https://github.com/zD4NI3LH/Devploit".format(paths))
-                print(titles.done.format('Devploit'))
-                print(titles.note_tools.format('Devploit', 'python2 Devploit'))
+            if path.exists('/usr/bin/Devploit') == True:
+                print(titles.installed.format('Devploit'))    
 
             else:
-                if path.exists('/usr/bin/Devploit') == True:
-                    print(titles.installed.format('Devploit'))    
-
-                else:
-                    paths = the_path(titles,'Devploit')
-                    print(titles.installing.format('Devploit'))
-                    system("""cd {} && sudo git clone https://github.com/zD4NI3LH/Devploit
+                paths = the_path(titles,'Devploit')
+                print(titles.installing.format('Devploit'))
+                system("""cd {} && sudo git clone https://github.com/zD4NI3LH/Devploit
                     cd Devploit && sudo bash install""".format(paths))
-                    print(titles.done.format('Devploit'))
-                    
-                print(titles.note_tools2.format('Devploit','Devploit','Terminal'))
+                print(titles.done.format('Devploit'))
+
+            print(titles.note_tools2.format('Devploit','Devploit','Terminal'))
 
         print(titles.readmore.format('Devploit', 'http://bit.ly/2KU7BMF'))
 
@@ -231,25 +229,24 @@ def gorecon(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Gorecon')
+            print(titles.installing.format('Gorecon'))
 
-            else:
-               paths = the_path(titles,'Gorecon')
-               print(titles.installing.format('Gorecon'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install golang-go")
 
-               if path.exists('/usr/bin/apt') == True:
-                   system("sudo apt install golang-go")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S go")
 
-               elif path.exists('/usr/bin/pacman') == True:
-                   system("sudo pacman -S go")
-
-               system("""cd {} && sudo go get "github.com/devanshbatham/gorecon"
+            system("""cd {} && sudo go get "github.com/devanshbatham/gorecon"
                cd gorecon && sudo go get "github.com/gocolly/colly"
                sudo go get "github.com/fatih/color" && sudo go get "github.com/likexian/whois-go" """.format(paths))
-               print(titles.done.format('Gorecon'))
-               print(titles.note_tools.format('Gorecon','go run gorecon.go'))
+            print(titles.done.format('Gorecon'))
+            print(titles.note_tools.format('Gorecon','go run gorecon.go'))
 
         print(titles.readmore.format('Gorecon','http://bit.ly/2KykK2p'))
 
@@ -264,23 +261,22 @@ def dracnmap(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Dracnmap')
+            print(titles.installing.format('Dracnmap'))
 
-            else:
-                paths = the_path(titles,'Dracnmap')
-                print(titles.installing.format('Dracnmap'))
-                
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install nmap")
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install nmap")
 
-                elif path.exists('usr/bin/pacman') == True:
-                    system("sudo pacman -S nmap")
+            elif path.exists('usr/bin/pacman') == True:
+                system("sudo pacman -S nmap")
 
-                system("cd {} && sudo git clone https://github.com/Screetsec/Dracnmap".format(paths))
-                print(titles.done.format('Dracnmap'))
-                print(titles.note_tools.format('Dracnmap', 'bash dracnmap-v2.2.sh'))
+            system(f"cd {paths} && sudo git clone https://github.com/Screetsec/Dracnmap")
+            print(titles.done.format('Dracnmap'))
+            print(titles.note_tools.format('Dracnmap', 'bash dracnmap-v2.2.sh'))
 
         print(titles.readmore.format('Dracnmap','http://bit.ly/2sTQtlS'))
 
@@ -299,26 +295,25 @@ def nmap(titles):
             print(titles.done.format('Nmap'))
             print(titles.note_tools2.format('Nmap','nmap','CMD'))
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/nmap') == True:
+                print(titles.installed.format('Nmap'))
 
             else:
-                if path.exists('/usr/bin/nmap') == True:
-                    print(titles.installed.format('Nmap'))
+                print(titles.installing.format('Nmap'))
 
-                else:
-                    print(titles.installing.format('Nmap'))
+                if path.exists('/usr/bin/apt') == True:
+                    system("sudo apt install nmap")
 
-                    if path.exists('/usr/bin/apt') == True:
-                        system("sudo apt install nmap")
-                        
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system("sudo pacman -S nmap")
+                elif path.exists('/usr/bin/pacman') == True:
+                    system("sudo pacman -S nmap")
 
-                    print(titles.done.format('Nmap'))
-                    
-                print(titles.note_tools2.format('Nmap','nmap','Terminal'))
+                print(titles.done.format('Nmap'))
+
+            print(titles.note_tools2.format('Nmap','nmap','Terminal'))
 
     except KeyboardInterrupt:
         print(titles.exiting)
@@ -334,16 +329,13 @@ def sublist3r(titles):
             python3 = str(input(titles.installed_or_not.format('Python 3.7'))).strip()
             action(titles,python3)
 
-            if (git[0].upper() == 'Y' and python3[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python3[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
                     print(titles.note_git)
                     system('.\\Git-2.21.0-32-bit.exe')
-                    
+
                 elif python3[0].upper() == 'N':
                     print(titles.downloading.format('python-3.7.3.exe'))
                     download('https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe')
@@ -390,26 +382,25 @@ def sslscan(titles):
             download('https://github.com/rbsec/sslscan/releases/download/1.11.11-rbsec/sslscan-win-1.11.11-rbsec.zip')
             print(titles.note_sslscan)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
-            
+            if path.exists('/usr/bin/sslscan') == True:
+                print(titles.installed.format('SSLScan'))
+
             else:
-                if path.exists('/usr/bin/sslscan') == True:
-                    print(titles.installed.format('SSLScan'))
+                print(titles.installing.format('SSLScan'))
 
-                else:
-                    print(titles.installing.format('SSLScan'))
+                if path.exists('/usr/bin/apt') == True:
+                    system('sudo apt install sslscan')
 
-                    if path.exists('/usr/bin/apt') == True:
-                        system('sudo apt install sslscan')
+                elif path.exists('/usr/bin/pacman') == True:
+                    system('sudo pacman -S sslscan')
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system('sudo pacman -S sslscan')
+                print(titles.done.format('SSLScan'))
 
-                    print(titles.done.format('SSLScan'))
-
-                print(titles.note_tools2.format('SSLScan','sslscan','Terminal'))
+            print(titles.note_tools2.format('SSLScan','sslscan','Terminal'))
 
         print(titles.readmore.format('SSLScan', 'http://bit.ly/2MAQBNo'))
 
@@ -445,27 +436,26 @@ def a2sv(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif path.exists('/usr/bin/pacman') == True:
+            paths = the_path(titles,'A2SV')
+            print(titles.installing.format('A2SV'))
+            system("""cd {} && sudo git clone https://github.com/hahwul/a2sv
+                cd a2sv && sudo pip2 install argparse netaddr""".format(paths))
+            print(titles.done.format('A2SV'))
+            print(titles.note_tools.format('A2SV','python2 a2sv.py'))
+
         else:
-            if path.exists('/usr/bin/pacman') == True:
-                paths = the_path(titles,'A2SV')
+            if path.exists('/usr/bin/a2sv') == False:
+                print(titles.installed.format('A2SV'))
+
+            else:
+                paths = the_path(titles, 'A2SV')
                 print(titles.installing.format('A2SV'))
                 system("""cd {} && sudo git clone https://github.com/hahwul/a2sv
-                cd a2sv && sudo pip2 install argparse netaddr""".format(paths))
-                print(titles.done.format('A2SV'))
-                print(titles.note_tools.format('A2SV','python2 a2sv.py'))
-                
-            else:
-                if path.exists('/usr/bin/a2sv') == False:
-                    print(titles.installed.format('A2SV'))
-
-                else:
-                    paths = the_path(titles, 'A2SV')
-                    print(titles.installing.format('A2SV'))
-                    system("""cd {} && sudo git clone https://github.com/hahwul/a2sv
                     cd a2sv && sudo bash install.sh""".format(paths))
-                    print(titles.done.format('A2SV'))
-                    
-                print(titles.note_tools2.format('A2SV','a2sv','Terminal'))
+                print(titles.done.format('A2SV'))
+
+            print(titles.note_tools2.format('A2SV','a2sv','Terminal'))
 
         print(titles.readmore.format('A2SV','http://bit.ly/2KCDPz7'))
 
@@ -483,10 +473,7 @@ def shodanhat(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if python2[0].upper() == 'N':
                     print(titles.downloading.format('python-2.7.16.msi'))
                     download('https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi')
@@ -520,11 +507,11 @@ def shodanhat(titles):
             print(titles.installing.format('ShodanHat'))
             system("""cd {} && sudo git clone https://github.com/HatBashBR/ShodanHat"
             sudo pip2 uninstall nmap && sudo pip2 install shodan python-nmap""".format(paths))
-  
+
         print(titles.done.format('ShodanHat'))
         print(titles.note_tools.format('ShodanHat','python2 shodanhat.py'))
         print(titles.readmore.format('ShodanHat','http://bit.ly/2KQnpDn'))
-        
+
     except KeyboardInterrupt:
         print(titles.exiting)
         exit()
@@ -539,10 +526,7 @@ def hatcloud(titles):
             ruby = str(input(titles.installed_or_not.format('Ruby-lang'))).strip()
             action(titles,ruby)
 
-            if (git[0].upper() == 'Y' and ruby[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or ruby[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -574,7 +558,7 @@ def hatcloud(titles):
         else:
             paths = the_path(titles,'HatCloud')
             print(titles.installing.format('HatCloud'))
-            system("cd {} && sudo git clone https://github.com/HatBashBR/HatCloud".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/HatBashBR/HatCloud")
 
         print(titles.done.format('HatCloud'))
         print(titles.note_tools.format('HatCloud','ruby hatcloud.rb'))
@@ -594,10 +578,7 @@ def sub6(titles):
             python2 = str(input(titles.installed_or_not.format('python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -629,7 +610,7 @@ def sub6(titles):
         else:
             paths = the_path(titles, 'sub6')
             print(titles.installing.format('sub6'))
-            system("cd {} && sudo git clone https://github.com/YasserGersy/sub6".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/YasserGersy/sub6")
 
         print(titles.done.format('sub6'))
         print(titles.note_tools.format('sub6','python2 sub6.py'))
@@ -701,10 +682,7 @@ def infosploit(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -734,7 +712,7 @@ def infosploit(titles):
             system("cd C:\\ && git clone https://github.com/CybernetiX-S3C/InfoSploit")
             print(titles.done.format('InfoSploit'))
             print(titles.note_tools.format('InfoSploit','python Infosploit.py'))
- 
+
         else:
             if path.exists('/usr/bin/Infosploit') == True:
                 print(titles.installed.format('InfoSploit'))
@@ -745,7 +723,7 @@ def infosploit(titles):
                 system("""cd {} && sudo git clone https://github.com/CybernetiX-S3C/InfoSploit
                 cd InfoSploit && sudo bash install""".format(paths))
                 print(titles.done.format('InfoSploit'))
-                
+
             print(titles.note_tools2.format('InfoSploit','Infosploit','Terminal'))
 
         print(titles.readmore.format('InfoSploit','http://bit.ly/2LUfN4w'))
@@ -785,26 +763,25 @@ def httrack(titles):
             system('.\\httrack-3.49.2.exe')
             print(titles.done.format('HTTrack'))
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/httrack') == True:
+                print(titles.installed.format('HTTrack'))
 
             else:
-                if path.exists('/usr/bin/httrack') == True:
-                    print(titles.installed.format('HTTrack'))
-                    
-                else:
-                    print(titles.installing.format('HTTrack'))
+                print(titles.installing.format('HTTrack'))
 
-                    if path.exists('/usr/bin/apt') == True:
-                        system('sudo apt install httrack')
+                if path.exists('/usr/bin/apt') == True:
+                    system('sudo apt install httrack')
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system('sudo pacman -S httrack')
+                elif path.exists('/usr/bin/pacman') == True:
+                    system('sudo pacman -S httrack')
 
-                    print(titles.done.format('HTTrack'))
-                    
-                print(titles.note_tools2.format('HTTrack','httrack','Terminal'))
+                print(titles.done.format('HTTrack'))
+
+            print(titles.note_tools2.format('HTTrack','httrack','Terminal'))
 
     except KeyboardInterrupt:
         print(titles.exiting)
@@ -859,18 +836,17 @@ def setoolkit(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
-        else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
 
-            else:
-                paths = the_path(titles,'SEToolkit')
-                print(titles.installing.format('SEToolkit'))
-                metasploit(titles)
-                system("""cd {} && sudo git clone https://github.com/trustedsec/social-engineer-toolkit set
+        else:
+            paths = the_path(titles,'SEToolkit')
+            print(titles.installing.format('SEToolkit'))
+            metasploit(titles)
+            system("""cd {} && sudo git clone https://github.com/trustedsec/social-engineer-toolkit set
                 cd set && sudo pip2 install -r requirements.txt""".format(paths))
-                print(titles.done.format('SEToolkit'))
-                print(titles.note_tools.format('SEToolkit','sudo python2 setoolkit'))
+            print(titles.done.format('SEToolkit'))
+            print(titles.note_tools.format('SEToolkit','sudo python2 setoolkit'))
 
         print(titles.readmore.format('SEToolkit','http://bit.ly/2EkvcHi'))
 
@@ -885,21 +861,20 @@ def phishx(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'PhishX')
+            print(titles.installing.format('PhishX'))
 
-            else:
-                paths = the_path(titles,'PhishX')
-                print(titles.installing.format('PhishX'))
+            if path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S python-setuptools sendemail php xterm")
 
-                if path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S python-setuptools sendemail php xterm")
-
-                system("""cd {} && sudo git clone https://github.com/rezaaksa/PhishX
+            system("""cd {} && sudo git clone https://github.com/rezaaksa/PhishX
                 cd PhishX && sudo bash installer.sh""".format(paths))
-                print(titles.done.format('PhishX'))
-                print(titles.note_tools.format('PhishX','python3 PhishX.py'))
+            print(titles.done.format('PhishX'))
+            print(titles.note_tools.format('PhishX','python3 PhishX.py'))
 
         print(titles.readmore.format('PhishX','http://bit.ly/2N7IM01'))
 
@@ -917,7 +892,7 @@ def phisherman(titles):
         else:
             paths = the_path(titles,'PhisherMan')
             print(titles.installing.format('PhisherMan'))
-            system("cd {} && sudo git clone https://github.com/FDX100/Phisher-man".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/FDX100/Phisher-man")
             print(titles.done.format('PhisherMan'))
             print(titles.note_tools.format('PhisherMan','sudo python2 phisherman.py'))
 
@@ -934,31 +909,30 @@ def aron(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/aron') == True:
+                print(titles.installed.format('Aron'))
 
             else:
-                if path.exists('/usr/bin/aron') == True:
-                    print(titles.installed.format('Aron'))
+                paths = the_path(titles, 'Aron')
+                print(titles.installing.format('Aron'))
 
-                else:
-                    paths = the_path(titles, 'Aron')
-                    print(titles.installing.format('Aron'))
+                if path.exists('/usr/bin/apt') == True:
+                    system("sudo apt install golang-go")
 
-                    if path.exists('/usr/bin/apt') == True:
-                        system("sudo apt install golang-go")
+                elif path.exists('/usr/bin/pacman') == True:
+                    system("sudo pacman -S go")
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system("sudo pacman -S go")
-
-                    system("""cd {} && sudo git clone https://github.com/m4ll0k/Aron
+                system("""cd {} && sudo git clone https://github.com/m4ll0k/Aron
                     cd Aron && sudo go get github.com/m4ll0k/printer"
                     sudo go env | grep -i gopath && sudo export GOPATH=$HOME/go
                     sudo go build aron.go && sudo cp aron /usr/bin/""".format(paths))
-                    print(titles.done.format('Aron'))
+                print(titles.done.format('Aron'))
 
-                print(titles.note_tools2.format('Aron','aron','Terminal'))
+            print(titles.note_tools2.format('Aron','aron','Terminal'))
 
         print(titles.readmore.format('Aron','http://bit.ly/2MkbKyj'))
 
@@ -975,24 +949,23 @@ def evilginx2(titles):
             download('https://github.com/kgretzky/evilginx2/releases/download/2.3.0/evilginx_windows_x86_2.3.0.zip')
             print(titles.note_evilginx2)
 
-        else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
 
-            else:
-                if path.exists('/usr/bin/apt') == True:
-                    paths = the_path(titles, 'Evilginx 2')
-                    print(titles.installing.format('Evilginx 2'))
-                    system("""cd {} && wget https://github.com/kgretzky/evilginx2/releases/download/2.3.0/evilginx_linux_x86_2.3.0.zip
+        else:
+            if path.exists('/usr/bin/apt') == True:
+                paths = the_path(titles, 'Evilginx 2')
+                print(titles.installing.format('Evilginx 2'))
+                system("""cd {} && wget https://github.com/kgretzky/evilginx2/releases/download/2.3.0/evilginx_linux_x86_2.3.0.zip
                     sudo apt install unzip && unzip evilginx_linux_x86_2.3.0.zip -d evilginx2
                     cd evilginx2 && sudo bash install.sh""".format(paths))
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    print(titles.installing.format('Evilginx 2'))
-                    system("sudo pacman -S go && sudo pacman -S evilginx")
+            elif path.exists('/usr/bin/pacman') == True:
+                print(titles.installing.format('Evilginx 2'))
+                system("sudo pacman -S go && sudo pacman -S evilginx")
 
-                print(titles.done.format('Evilginx 2'))
-                print(titles.note_tools2.format('Evilginx 2','evilginx','Terminal'))
+            print(titles.done.format('Evilginx 2'))
+            print(titles.note_tools2.format('Evilginx 2','evilginx','Terminal'))
 
         print(titles.readmore.format('Evilginx 2','http://bit.ly/2O8cWFS'))
 
@@ -1010,10 +983,7 @@ def infinity(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -1064,20 +1034,19 @@ def credsniper(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'CredSniper')
 
-            else:
-                paths = the_path(titles,'CredSniper')
+            if path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S virtualenv gnupg certbot")
 
-                if path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S virtualenv gnupg certbot")
-
-                system("""cd {} && sudo git clone https://github.com/ustayready/CredSniper
+            system("""cd {} && sudo git clone https://github.com/ustayready/CredSniper
                 cd CredSniper && sudo bash install.sh""".format(paths))
-                print(titles.done.format('CredSniper'))
-                print(titles.note_tools.format('CredSniper','python3 credsniper.py'))
+            print(titles.done.format('CredSniper'))
+            print(titles.note_tools.format('CredSniper','python3 credsniper.py'))
 
         print(titles.readmore.format('CredSniper','http://bit.ly/2yXXrc1'))
 
@@ -1091,17 +1060,18 @@ def ghost_phisher(titles):
         if name == 'nt':
             print(titles.doesnt_support_windows)
 
-        else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
 
-            else:
-                paths = the_path(titles,'Ghost Phisher')
-                print(titles.installing.format('Ghost Phisher'))
-                metasploit(titles)
-                system("cd {} && sudo git clone https://github.com/savio-code/ghost-phisher".format(paths))
-                print(titles.done.format('Ghost Phisher'))
-                print(titles.note_tools2.format('Ghost Phisher','sudo python2 ghost.py','ghost-phisher/Ghost-Phisher'))
+        else:
+            paths = the_path(titles,'Ghost Phisher')
+            print(titles.installing.format('Ghost Phisher'))
+            metasploit(titles)
+            system(
+                f"cd {paths} && sudo git clone https://github.com/savio-code/ghost-phisher"
+            )
+            print(titles.done.format('Ghost Phisher'))
+            print(titles.note_tools2.format('Ghost Phisher','sudo python2 ghost.py','ghost-phisher/Ghost-Phisher'))
 
         print(titles.readmore.format('Ghost Phisher','http://bit.ly/2HeR83c'))
 
@@ -1119,10 +1089,7 @@ def subdomain_analyzer(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -1157,7 +1124,7 @@ def subdomain_analyzer(titles):
             print(titles.installing.format('SubDomain-Analyzer'))
             system("""cd {} && git clone https://github.com/El3ct71k/SubDomain-Analyzer
             cd SubDomain-Analyzer && sudo pip2 install -r requirements.txt""".format(paths))
-            
+
         print(titles.done.format('SubDomain-Analyzer'))
         print(titles.note_tools.format('SubDomain-Analyzer','python subdomain-analyzer.py'))
         print(titles.readmore.format('SubDomain-Analyzer','http://bit.ly/2NKLU2J'))
@@ -1182,7 +1149,7 @@ def sqlmap(titles):
                 print(titles.note_python3)
                 system('.\\python-3.7.3.exe')
 
-            elif (python3.upper() == 'HELP' or python3.upper() == 'CHANGELOG' or python3.upper() == 'ABOUT'):
+            elif python3.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
                 sqlmap(titles)
 
             else:
@@ -1195,7 +1162,7 @@ def sqlmap(titles):
         else:
             print(titles.installing.format('SQLMap'))
             system("sudo pip3 install sqlmap")
-            
+
         print(titles.done.format('SQLMap'))
         print(titles.note_tools2.format('SQLMap','sqlmap','Terminal & CMD'))
         print(titles.readmore.format('SQLMap','http://bit.ly/2zArNjX'))
@@ -1214,10 +1181,7 @@ def sqlmate(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -1252,7 +1216,7 @@ def sqlmate(titles):
             print(titles.installing.format('SQLMate'))
             system("""cd {} && sudo git clone https://github.com/s0md3v/sqlmate
             cd sqlmate && sudo pip2 install -r requirements.txt""".format(paths))
-            
+
         print(titles.done.format('SQLMate'))
         print(titles.note_tools.format('SQLMate', 'python2 sqlmate'))
         print(titles.readmore.format('SQLMate','http://bit.ly/2C0DwXW'))
@@ -1268,26 +1232,25 @@ def searchsploit(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/searchsploit') == True:
+                print(titles.installed.format('SearchSploit'))
 
             else:
-                if path.exists('/usr/bin/searchsploit') == True:
-                    print(titles.installed.format('SearchSploit'))
+                print(titles.installing.format('SearchSploit'))
 
-                else:
-                    print(titles.installing.format('SearchSploit'))
+                if path.exists('/usr/bin/apt') == True:
+                    system("sudo apt install go-exploitdb")
 
-                    if path.exists('/usr/bin/apt') == True:
-                        system("sudo apt install go-exploitdb")
+                elif path.exists('/usr/bin/pacman') == True:
+                    system("sudp pacman -S exploitdb")
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system("sudp pacman -S exploitdb")
+                print(titles.done.format('SearchSploit'))
 
-                    print(titles.done.format('SearchSploit'))
-
-                print(titles.note_tools2.format('SearchSploit','searchsploit','Terminal'))
+            print(titles.note_tools2.format('SearchSploit','searchsploit','Terminal'))
 
         print(titles.readmore.format('SearchSploit','http://bit.ly/2svkh4C'))
 
@@ -1362,19 +1325,18 @@ def vulscan(titles):
             print(titles.downloading.format('nmap-7.70-setup.exe'))
             download('https://nmap.org/dist/nmap-7.70-setup.exe')
             system('.\\nmap-7.70-setup.exe')
-            
+
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            print(titles.installing.format('vulscan'))
 
-            else:
-                print(titles.installing.format('vulscan'))
+            if path.exists('/usr/bin/apt') == True:
+                system('sudo apt install nmap')
 
-                if path.exists('/usr/bin/apt') == True:
-                    system('sudo apt install nmap')
-
-                elif path.exists('/usr/bin/pacman'):
-                    system('sudo pacman install nmap')
+            elif path.exists('/usr/bin/pacman'):
+                system('sudo pacman install nmap')
 
         print(titles.downloading.format('vulscan-master.zip'))
         download('https://github.com/scipag/vulscan/archive/master.zip')
@@ -1394,10 +1356,7 @@ def takeover(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -1429,7 +1388,7 @@ def takeover(titles):
         else:
             paths = the_path(titles,'TakeOver')
             print(titles.installing.format('TakeOver'))
-            system("cd {} && sudo git clone https://github.com/m4ll0k/takeover".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/m4ll0k/takeover")
 
         print(titles.done.format('TakeOver'))
         print(titles.note_tools.format('TakeOver','python2 takeover.py'))
@@ -1446,20 +1405,19 @@ def openvas(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
-            else:
-                print(titles.installing.format('OpenVAS'))
+            print(titles.installing.format('OpenVAS'))
 
-                if path.exists('/usr/bin/pacman') == True:
-                    system('sudo pacman -S openvas')
+            if path.exists('/usr/bin/pacman') == True:
+                system('sudo pacman -S openvas')
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system('sudo apt install openvas')
+            elif path.exists('/usr/bin/apt') == True:
+                system('sudo apt install openvas')
 
-                print(titles.done.format('OpenVAS'))
-                print(titles.note_tools2.format('OpenVAS','openvas-start','Terminal'))
+            print(titles.done.format('OpenVAS'))
+            print(titles.note_tools2.format('OpenVAS','openvas-start','Terminal'))
 
         print(titles.readmore.format('OpenVAS','http://bit.ly/2FtrxnV'))
 
@@ -1474,29 +1432,28 @@ def droid_hunter(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                    print(titles.unknow_distro)
+            if path.exists('/usr/bin/dhunter') == True:
+                print(titles.installed.format('Droid-Hunter'))
 
             else:
-                if path.exists('/usr/bin/dhunter') == True:
-                    print(titles.installed.format('Droid-Hunter'))
+                paths = the_path(titles,'Droid-Hunter')
+                print(titles.installing.format('Droid-Hunter'))
 
-                else:
-                    paths = the_path(titles,'Droid-Hunter')
-                    print(titles.installing.format('Droid-Hunter'))
+                if path.exists('/usr/bin/apt') == True:
+                    system("sudo apt install ruby")
 
-                    if path.exists('/usr/bin/apt') == True:
-                        system("sudo apt install ruby")
+                elif path.exists('/usr/bin/pacman') == True:
+                    system("sudo pacman -S ruby")
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system("sudo pacman -S ruby")
-
-                    system("""cd {} && sudo git clone https://github.com/hahwul/droid-hunter
+                system("""cd {} && sudo git clone https://github.com/hahwul/droid-hunter
                     cd droid-hunter && sudo bash install.sh""".format(paths))
-                    print(titles.done.format('Droid-Hunter'))
+                print(titles.done.format('Droid-Hunter'))
 
-                print(titles.note_tools2.format('Droid-Hunter','dhunter','Terminal'))
+            print(titles.note_tools2.format('Droid-Hunter','dhunter','Terminal'))
 
         print(titles.readmore.format('Droid-Hunter','http://bit.ly/2tY1Nuj'))
 
@@ -1511,24 +1468,23 @@ def patrowl(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'PatrOwl')
+            print(titles.installing.format('PatrOwl'))
 
-            else:
-                paths = the_path(titles,'PatrOwl')
-                print(titles.installing.format('PatrOwl'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install curl rabbitmq-server postgresql build-essential")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install curl rabbitmq-server postgresql build-essential")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S curl rabbitmq postgresql base-devel")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S curl rabbitmq postgresql base-devel")
-
-                system("""cd {} && sudo git clone https://github.com/Patrowl/PatrowlManager && cd PatrOwlManager
+            system("""cd {} && sudo git clone https://github.com/Patrowl/PatrowlManager && cd PatrOwlManager
                 sudo pip2 install virtualenv && sudo pip2 install -r requirements.txt""".format(paths))
-                print(titles.done.format('PatrOwl'))
-                print(titles.note_tools.format('PatrOwl','start-server.sh'))
+            print(titles.done.format('PatrOwl'))
+            print(titles.note_tools.format('PatrOwl','start-server.sh'))
 
         print(titles.readmore.format('PatrOwl','http://bit.ly/2InjYAy'))
 
@@ -1545,15 +1501,14 @@ def infection_monkey(titles):
             download("https://github.com/guardicore/monkey/releases/download/v1.6.3/monkey-windows-32.exe")
             system(".\\monkey-windows-32.exe")
 
-        else:
-            if path.exists('/usr/bin/apt') == True:
-                print(titles.installing.format('Infection Monkey'))
-                system("""sudo wget https://github.com/guardicore/monkey/releases/download/v1.6.2/infection_monkey_deb.1.6.2.tgz
+        elif path.exists('/usr/bin/apt') == True:
+            print(titles.installing.format('Infection Monkey'))
+            system("""sudo wget https://github.com/guardicore/monkey/releases/download/v1.6.2/infection_monkey_deb.1.6.2.tgz
                 sudo tar xvzf infection_monkey_deb.1.6.2.tgz && sudo dpkg -i monkey_island.deb""")
-                print(titles.done.format('Infection Monkey'))
+            print(titles.done.format('Infection Monkey'))
 
-            else:
-                print(titles.run_well.format('Debian & Windows'))
+        else:
+            print(titles.run_well.format('Debian & Windows'))
 
         print(titles.readmore.format('Infection Monkey','http://bit.ly/2sldHOf'))
 
@@ -1570,18 +1525,17 @@ def vuls(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
-        else:
-            if architecture()[0] == "64bit":
-                paths = the_path(titles,'Vuls')
-                print(titles.installing.format('Vuls'))
-                system("""cd {} && sudo mkdir vuls && cd vuls
+        elif architecture()[0] == "64bit":
+            paths = the_path(titles,'Vuls')
+            print(titles.installing.format('Vuls'))
+            system("""cd {} && sudo mkdir vuls && cd vuls
                 sudo wget https://github.com/future-architect/vuls/releases/download/v0.7.0/vuls_0.7.0_linux_amd64.tar.gz
                 sudo tar xvzf vuls_0.7.0_linux_amd64.tar.gz && sudo chmod +x vuls""".format(paths))
-                print(titles.done.format('Vuls'))
-                print(titles.note_tools.format('Vuls','sudo ./vuls'))
+            print(titles.done.format('Vuls'))
+            print(titles.note_tools.format('Vuls','sudo ./vuls'))
 
-            else:
-                print(titles.only_compatible.format("64-bit OS"))
+        else:
+            print(titles.only_compatible.format("64-bit OS"))
 
         print(titles.readmore.format('Vuls','http://bit.ly/2kxngpY'))
 
@@ -1617,28 +1571,27 @@ def wpscan(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/wpscan') == True:
+                print(titles.installed.format('WPScan'))
 
             else:
-                if path.exists('/usr/bin/wpscan') == True:
-                    print(titles.installed.format('WPScan'))
-
-                else:
-                    if path.exists('/usr/bin/apt') == True:
-                        paths = the_path(titles,'WPScan')
-                        print(titles.installing.format('WPScan'))
-                        system("""sudo apt install libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby ruby-bundler ruby-dev build-essential libgmp-dev zlib1g-dev
+                if path.exists('/usr/bin/apt') == True:
+                    paths = the_path(titles,'WPScan')
+                    print(titles.installing.format('WPScan'))
+                    system("""sudo apt install libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby ruby-bundler ruby-dev build-essential libgmp-dev zlib1g-dev
                         cd {} && sudo git clone https://github.com/wpscanteam/wpscan
                         cd wpscan && sudo bundle install && sudo rake install""".format(paths))
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system("sudo pacman -S wpscan")
+                elif path.exists('/usr/bin/pacman') == True:
+                    system("sudo pacman -S wpscan")
 
-                    print(titles.done.format('WPScan'))
-                    
-                print(titles.note_tools2.format('WPScan','wpscan','Terminal'))
+                print(titles.done.format('WPScan'))
+
+            print(titles.note_tools2.format('WPScan','wpscan','Terminal'))
 
         print(titles.readmore.format('WPScan','https://github.com/wpscanteam/wpscan'))
 
@@ -1720,13 +1673,12 @@ def raptor(titles):
             print(titles.done.format('Raptor'))
             print(titles.note_tools.format('Raptor','sudo bash start.sh'))
 
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
+            print(titles.wsl)
+
         else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-                print(titles.wsl)
-            
-            else:
-                print(titles.run_well.format('Debian'))
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('Raptor','http://bit.ly/2sAtbBq'))
 
@@ -1744,16 +1696,13 @@ def breacher(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
                     print(titles.note_git)
                     system('.\\Git-2.21.0-32-bit.exe')
-                    
+
                 elif python2[0].upper() == 'N':
                     print(titles.downloading.format('python-2.7.16.msi'))
                     download('https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi')
@@ -1779,7 +1728,7 @@ def breacher(titles):
         else:
             paths = the_path(titles,'Breacher')
             print(titles.installing.format('Breacher'))
-            system("cd {} && sudo https://github.com/s0md3v/Breacher".format(paths))
+            system(f"cd {paths} && sudo https://github.com/s0md3v/Breacher")
 
         print(titles.done.format("Breacher"))
         print(titles.note_tools.format("Breacher","python2 breacher.py"))
@@ -1799,7 +1748,7 @@ def wascan(titles):
         else:
             paths = the_path(titles,'WAScan')
             print(titles.installing.format('WAScan'))
-            system("cd {} && sudo git clone https://github.com/m4ll0k/WAScan".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/m4ll0k/WAScan")
             print(titles.done.format('WAScan'))
             print(titles.note_tools.format('WAScan','python2 wascan.py'))
 
@@ -1845,7 +1794,9 @@ def spectre_meldown_checker(titles):
         else:
             paths = the_path(titles,'spectre-meltdown-checker')
             print(titles.installing.format('spectre-meltdown-checker'))
-            system("cd {} && sudo git clone https://github.com/speed47/spectre-meltdown-checker".format(paths))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/speed47/spectre-meltdown-checker"
+            )
             print(titles.done.format('spectre-meltdown-checker'))
             print(titles.note_tools.format('spectre-meltdown-checker','sudo bash spectre-meltdown-checker.sh'))
 
@@ -1862,23 +1813,24 @@ def brutedum(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'BruteDum')
+            print(titles.installing.format('BruteDum'))
 
-            else:
-                paths = the_path(titles,'BruteDum')
-                print(titles.installing.format('BruteDum'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install nmap hydra medusa ncrack")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install nmap hydra medusa ncrack")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S nmap hydra medusa ncrack")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S nmap hydra medusa ncrack")
-
-                system("""cd {} && sudo git clone https://github.com/GitHackTools/BruteDum""".format(paths))
-                print(titles.done.format('BruteDum'))
-                print(titles.note_tools.format('BruteDum','python3 brutedum.py'))
+            system(
+                f"""cd {paths} && sudo git clone https://github.com/GitHackTools/BruteDum"""
+            )
+            print(titles.done.format('BruteDum'))
+            print(titles.note_tools.format('BruteDum','python3 brutedum.py'))
 
         print(titles.readmore.format('BruteDum','http://bit.ly/2ISotWY'))
 
@@ -1896,16 +1848,13 @@ def ftpbruter(titles):
             python3 = str(input(titles.installed_or_not.format('Python 3.7'))).strip()
             action(titles,python3)
 
-            if (git[0].upper() == 'Y' and python3[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python3[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
                     print(titles.note_git)
                     system('.\\Git-2.21.0-32-bit.exe')
-                    
+
                 elif python3[0].upper() == 'N':
                     print(titles.downloading.format('python-3.7.3.exe'))
                     download('https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe')
@@ -1931,7 +1880,9 @@ def ftpbruter(titles):
         else:
             paths = the_path(titles,"FTPBruter")
             print(titles.installing.format("FTPBruter"))
-            system("cd {} && sudo git clone https://github.com/GitHackTools/FTPBruter".format(paths))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/GitHackTools/FTPBruter"
+            )
 
         print(titles.done.format("FTPBruter"))
         print(titles.note_tools.format("FTPBruter","python3 ftpbruter.py"))
@@ -1951,16 +1902,13 @@ def hash_buster(titles):
             python3 = str(input(titles.installed_or_not.format('Python 3.7'))).strip()
             action(titles,python3)
 
-            if (git[0].upper() == 'Y' and python3[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python3[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
                     print(titles.note_git)
                     system('.\\Git-2.21.0-32-bit.exe')
-                    
+
                 elif python3[0].upper() == 'N':
                     print(titles.downloading.format('python-3.7.3.exe'))
                     download('https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe')
@@ -1995,7 +1943,7 @@ def hash_buster(titles):
                 system("""cd {} && sudo git clone https://github.com/s0md3v/Hash-Buster
                 cd Hash-Buster && sudo make install""".format(paths))
                 print(titles.done.format("Hash-Buster"))
-                
+
             print(titles.note_tools2.format("Hash-Buster",'buster','Terminal'))
 
         print(titles.readmore.format('Hash-Buster','http://bit.ly/2GxqhPL'))
@@ -2039,10 +1987,7 @@ def blazy(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -2097,26 +2042,25 @@ def ncrack(titles):
             print(titles.done.format('Ncrack'))
             print(titles.note_tools2.format('Ncrack','ncrack','CMD'))
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/ncrack') == True:
+                print(titles.installed.format('Ncrack'))
 
             else:
-                if path.exists('/usr/bin/ncrack') == True:
-                    print(titles.installed.format('Ncrack'))
+                print(titles.installing.format('Ncrack'))
+                if path.exists('/usr/bin/apt') == True:
+                    system("sudo apt instal ncrack")
 
-                else:
-                    print(titles.installing.format('Ncrack'))
-                    if path.exists('/usr/bin/apt') == True:
-                        system("sudo apt instal ncrack")
+                elif path.exists('/usr/bin/pacman') == True:
+                    system("sudo pacman -S ncrack")
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system("sudo pacman -S ncrack")
+                print(titles.done.format('Ncrack'))
 
-                    print(titles.done.format('Ncrack'))
-                    
-                print(titles.note_tools2.format('Ncrack','ncrack','Terminal'))
-                    
+            print(titles.note_tools2.format('Ncrack','ncrack','Terminal'))
+
         print(titles.readmore.format('Ncrack','http://bit.ly/2BxF3Y8'))
 
     except KeyboardInterrupt:
@@ -2162,11 +2106,10 @@ def sniffair(titles):
             print(titles.done.format('SniffAir'))
             print(titles.note_tools.format('SniffAir','python2 SniffAir.py'))
 
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
         else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-            else:
-                print(titles.run_well.format('Debian'))
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('SniffAir','http://bit.ly/2U06v5S'))
 
@@ -2184,11 +2127,10 @@ def wifi_pumpkin(titles):
             cd WiFi-Pumpkin && sudo bash installer.sh --install""".format(paths))
             print(titles.done.format('WiFi-Pumpkin'))
 
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
         else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-            else:
-                print(titles.run_well.format('Debian'))
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('WiFi-Pumpkin','http://bit.ly/2MFWIjB'))
 
@@ -2202,27 +2144,26 @@ def airgeddon(titles):
         if name == 'nt':
             print(titles.doesnt_support_windows)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/airgeddon') == True:
+                print(titles.installed.format('Airgeddon'))
 
             else:
-                if path.exists('/usr/bin/airgeddon') == True:
-                    print(titles.installed.format('Airgeddon'))
-
-                else:
-                    if path.exists('/usr/bin/pacman') == True:
-                        system("""sudo pacman -S bettercap bully ccze crunch dsniff ethtool ettercap hashcat sslstrip lighttpd john hostapd iptables nftables pciutils pixiewps reaver usbutils
+                if path.exists('/usr/bin/pacman') == True:
+                    system("""sudo pacman -S bettercap bully ccze crunch dsniff ethtool ettercap hashcat sslstrip lighttpd john hostapd iptables nftables pciutils pixiewps reaver usbutils
                         sudo wget https://github.com/v1s1t0r1sh3r3/airgeddon/raw/master/binaries/arch/airgeddon-git-9.20-1-any.pkg.tar.xz
                         sudo pacman -U pacman -U airgeddon-git-9.20-1-any.pkg.tar.xz""")
 
-                    elif path.exists('/usr/bin/apt') == True:
-                        system("""sudo wget https://github.com/v1s1t0r1sh3r3/airgeddon/raw/master/binaries/kali/airgeddon_9.20-1_all.deb
+                elif path.exists('/usr/bin/apt') == True:
+                    system("""sudo wget https://github.com/v1s1t0r1sh3r3/airgeddon/raw/master/binaries/kali/airgeddon_9.20-1_all.deb
                         sudo dpkg -i airgeddon_9.20-1_all.deb""")
 
-                    print(titles.done.format('Airgeddon'))
-                    
-                print(titles.note_tools2.format('Airgeddon','sudo airgeddon','Terminal'))
+                print(titles.done.format('Airgeddon'))
+
+            print(titles.note_tools2.format('Airgeddon','sudo airgeddon','Terminal'))
 
         print(titles.readmore.format('Airgeddon','http://bit.ly/2tOQ5Dd'))
 
@@ -2236,23 +2177,24 @@ def pikarma(titles):
         if name == 'nt':
             print(titles.doesnt_support_windows)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'PiKarma')
+            print(titles.installing.format('PiKarma'))
 
-            else:
-                paths = the_path(titles,'PiKarma')
-                print(titles.installing.format('PiKarma'))
-                
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install aircrack-ng")
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install aircrack-ng")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S aircrack-ng")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S aircrack-ng")
 
-                system("""cd {} && sudo git clone https://github.com/WiPi-Hunter/PiKarma && sudo pip2 install termcolor""".format(paths))
-                print(titles.done.format('PiKarma'))
-                print(titles.note_tools.format('PiKarma','python2 PiKarma.py'))
+            system(
+                f"""cd {paths} && sudo git clone https://github.com/WiPi-Hunter/PiKarma && sudo pip2 install termcolor"""
+            )
+            print(titles.done.format('PiKarma'))
+            print(titles.note_tools.format('PiKarma','python2 PiKarma.py'))
 
         print(titles.readmore.format('PiKarma','http://bit.ly/2slyUaC'))
 
@@ -2266,24 +2208,23 @@ def wifite2(titles):
         if name == 'nt':
             print(titles.doesnt_support_windows)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Wifite 2')
+            print(titles.installing.format('Wifite 2'))
 
-            else:
-                paths = the_path(titles,'Wifite 2')
-                print(titles.installing.format('Wifite 2'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install aicrack-ng tshark reaver bully cowpatty pyrit hashcat ncxtools hcxdumptool hcxpcaptool")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install aicrack-ng tshark reaver bully cowpatty pyrit hashcat ncxtools hcxdumptool hcxpcaptool")
+            elif path.exists('/usr/bin/pacman'):
+                system("sudo pacman -S aicrack-ng tshark reaver bully cowpatty pyrit hashcat ncxtools hcxdumptool hcxpcaptool")
 
-                elif path.exists('/usr/bin/pacman'):
-                    system("sudo pacman -S aicrack-ng tshark reaver bully cowpatty pyrit hashcat ncxtools hcxdumptool hcxpcaptool")
-
-                system("""cd {} && sudo git clone https://github.com/derv82/wifite2
+            system("""cd {} && sudo git clone https://github.com/derv82/wifite2
                 cd wifite2 && sudo python2 setup.py install""".format(paths))
-                print(titles.done.format('Wifite 2'))
-                print(titles.note_tools.format('Wifite2','sudo python2 Wifite.py'))
+            print(titles.done.format('Wifite 2'))
+            print(titles.note_tools.format('Wifite2','sudo python2 Wifite.py'))
 
         print(titles.readmore.format('Wifite 2','http://bit.ly/2Wvf4Lg'))
 
@@ -2322,26 +2263,25 @@ def fluxion(titles):
         if name == 'nt':
             print(titles.doesnt_support_windows)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Fluxion')
+            print(titles.installing.format('Fluxion'))
 
-            else:
-                paths = the_path(titles,'Fluxion')
-                print(titles.installing.format('Fluxion'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install aircrack-ng coreutils awk iw unzip bc xterm binutils macchanger php-cgi openssl pyrit")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install aircrack-ng coreutils awk iw unzip bc xterm binutils macchanger php-cgi openssl pyrit")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S aircrack-ng coreutils awk iw unzip bc xterm binutils macchanger php-cgi  pyrit")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S aircrack-ng coreutils awk iw unzip bc xterm binutils macchanger php-cgi  pyrit")
-
-                system("""cd {} && sudo git clone https://github.com/FluxionNetwork/fluxion
+            system("""cd {} && sudo git clone https://github.com/FluxionNetwork/fluxion
                 cd fluxion && sudo git clone https://github.com/aircrack-ng/mdk4
                 cd mdk4 && sudo make install
                 cd {}/fluxion && sudo bash fluxion.sh -i""".format(paths,paths))
-                print(titles.done.format('Fluxion'))
-                print(titles.note_tools.format('Fluxion','sudo bash fluxion.sh'))
+            print(titles.done.format('Fluxion'))
+            print(titles.note_tools.format('Fluxion','sudo bash fluxion.sh'))
 
         print(titles.readmore.format('Fluxion','http://bit.ly/2JJELln'))
 
@@ -2355,26 +2295,25 @@ def reaver(titles):
         if name == 'nt':
             print(titles.doesnt_support_windows)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/reaver') ==  True:
+                print(titles.installed.format('Reaver'))
 
             else:
-                if path.exists('/usr/bin/reaver') ==  True:
-                    print(titles.installed.format('Reaver'))
+                print(titles.installing.format('Reaver'))
 
-                else:
-                    print(titles.installing.format('Reaver'))
+                if path.exists('/usr/bin/apt') == True:
+                    system("sudo apt install reaver build-essential libpcap-dev aircrack-ng pixiewps")
 
-                    if path.exists('/usr/bin/apt') == True:
-                        system("sudo apt install reaver build-essential libpcap-dev aircrack-ng pixiewps")
+                elif path.exists('/usr/bin/pacman') == True:
+                    system("sudo pacman -S reaver libpcap aircrack-ng pixiewps")
 
-                    elif path.exists('/usr/bin/pacman') == True:
-                        system("sudo pacman -S reaver libpcap aircrack-ng pixiewps")
+                print(titles.done.format('Reaver'))
 
-                    print(titles.done.format('Reaver'))
-                    
-                print(titles.note_tools2.format('Reaver','reaver','Terminal'))
+            print(titles.note_tools2.format('Reaver','reaver','Terminal'))
 
         print(titles.readmore.format('Reaver','http://bit.ly/2GRlTMY'))
 
@@ -2420,13 +2359,12 @@ def xerosploit(titles):
 
             print(titles.note_tools2.format('Xerosploit','sudo xerosploit','Terminal'))
 
-        else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-                print(titles.wsl)
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
+            print(titles.wsl)
 
-            else:
-                print(titles.run_well.format('Debian'))
+        else:
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('Xerosploit','http://bit.ly/2q4qpAD'))
 
@@ -2440,23 +2378,22 @@ def seth(titles):
         if name == 'nt':
             print(titles.doesnt_support_windows)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Seth')
+            print(titles.installing.format('Seth'))
 
-            else:
-                paths = the_path(titles,'Seth')
-                print(titles.installing.format('Seth'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install tcpdump dsniff openssl && sudo pip3 install hexdump")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install tcpdump dsniff openssl && sudo pip3 install hexdump")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S tcpdump dsniff openssl && sudo pip3 install hexdump")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S tcpdump dsniff openssl && sudo pip3 install hexdump")
-
-                system("cd {} && sudo git clone https://github.com/SySS-Research/Seth".format(paths))
-                print(titles.done.format('Seth'))
-                print(titles.note_tools.format('Seth','sudo bash seth.sh'))
+            system(f"cd {paths} && sudo git clone https://github.com/SySS-Research/Seth")
+            print(titles.done.format('Seth'))
+            print(titles.note_tools.format('Seth','sudo bash seth.sh'))
 
         print(titles.readmore.format('Seth','http://bit.ly/2DamOVy'))
 
@@ -2505,7 +2442,7 @@ def sharp(titles):
             elif path.exists('/usr/bin/pacman') == True:
                 system("sudo pacman -S aircrack-ng espeak")
 
-            system("cd {} && https://github.com/europa502/shARP".format(paths))
+            system(f"cd {paths} && https://github.com/europa502/shARP")
             print(titles.done.format('shARP'))
             print(titles.note_tools.format('shARP','sudo bash shARP.sh'))
 
@@ -2531,7 +2468,9 @@ def sharp_2(titles):
             elif path.exists('/usr/bin/pacman') == True:
                 system("sudo pacman -S aircrack-ng espeak")
 
-            system("cd {} && sudo git clone https://github.com/europa502/shARP_2.0 shARP2".format(paths))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/europa502/shARP_2.0 shARP2"
+            )
             print(titles.done.format('shARP 2.0'))
             print(titles.note_tools.format('shARP 2.0','sudo bash shARP.sh'))
 
@@ -2551,12 +2490,11 @@ def eviltwinframework(titles):
             cd EvilTwinFramework && sudo python2 setup.py""".format(paths))
             print(titles.done.format('EviltwinFramework'))
             print(titles.note_tools.format('EvilTwinFramework','sudo python2 etfconsole.py'))
-            
+
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
         else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-            else:
-                print(titles.run_well.format('Debian'))
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('EvilTwinFramework','http://bit.ly/2Hw6owh'))
 
@@ -2575,11 +2513,10 @@ def the_rogue_toolkit(titles):
             print(titles.done.format('The Rogue Toolkit'))
             print(titles.note_tools.format('The Rogue Toolkit','sudo python2 rogue.py'))
 
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
         else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-            else:
-                print(titles.run_well.format('Debian'))
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('The Rogue Toolkit','http://bit.ly/2UR5UEE'))
 
@@ -2597,10 +2534,7 @@ def sitebroker(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -2635,7 +2569,7 @@ def sitebroker(titles):
             print(titles.installing.format('SiteBroker'))
             system("""cd {} && sudo git clone https://github.com/Anon-Exploiter/SiteBroker
             cd SiteBroker && sudo pip2 install -r requirements.txt""".format(paths))
-            
+
         print(titles.done.format('SiteBroker'))
         print(titles.note_tools.format('SiteBroker','python2 SiteBroker.py'))
         print(titles.readmore.format('SiteBroker','http://bit.ly/2MwTdeF'))
@@ -2662,7 +2596,9 @@ def websploit(titles):
             elif path.exists('/usr/bin/pacman') == True:
                 system("sudo pacman -S aircrack-ng xterm")
 
-            system("cd {} && sudo git clone https://github.com/websploit/websploit/blob/master/websploit".format(paths))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/websploit/websploit/blob/master/websploit"
+            )
             print(titles.done.format('WebSploit'))
             print(titles.note_tools.format('WebSploit','python2 websploit'))
 
@@ -2682,10 +2618,7 @@ def wpsploit(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -2717,8 +2650,8 @@ def wpsploit(titles):
         else:
             paths = the_path(titles,'WPSploit')
             print(titles.installing.format('WPSploit'))
-            system("cd {} && sudo git clone https://github.com/offshores/WPSploit".format(paths))
-            
+            system(f"cd {paths} && sudo git clone https://github.com/offshores/WPSploit")
+
         print(titles.done.format('WPSploit'))
         print(titles.note_tools.format('WPSploit', 'python2 wpsploit.py'))
         print(titles.readmore.format('WPSploit','http://bit.ly/2MwTdeF'))
@@ -2737,10 +2670,7 @@ def zoom(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -2775,7 +2705,7 @@ def zoom(titles):
             print(titles.installing.format('Zoom'))
             system("""cd {} && sudo git clone https://github.com/gcxtx/Zoom
             cd Zoom && sudo pip2 install -r requirements.txt""".format(paths))
-            
+
         print(titles.done.format('Zoom'))
         print(titles.note_tools.format('Zoom','python2 zoom.py'))
         print(titles.readmore.format('Zoom','http://bit.ly/2HLR66h'))
@@ -2822,7 +2752,7 @@ def sqlcake(titles):
                 print(titles.note_ruby)
                 system('.\\rubyinstaller-2.6.3-1-x86.exe')
 
-            elif (ruby.upper() == 'HELP' or ruby.upper() == 'CHANGELOG' or ruby.upper() == 'ABOUT'):
+            elif ruby.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
                 sqlcake(titles)
 
             else:
@@ -2858,10 +2788,7 @@ def bsqlinjector(titles):
             ruby = str(input(titles.installed_or_not.format('Ruby-lang'))).strip()
             action(titles,ruby)
 
-            if (git[0].upper() == 'Y' and ruby[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or ruby[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -2893,7 +2820,7 @@ def bsqlinjector(titles):
         else:
             paths = the_path(titles,'BSQLinjector')
             print(titles.installing.format('BSQLinjector'))
-            system("cd {} && git clone https://github.com/enjoiz/BSQLinjector".format(paths))
+            system(f"cd {paths} && git clone https://github.com/enjoiz/BSQLinjector")
 
         print(titles.done.format('BSQLinjector'))
         print(titles.note_tools.format('BSQLinjector','ruby BSQLinjector.rb'))
@@ -2913,10 +2840,7 @@ def xxeinjector(titles):
             ruby = str(input(titles.installed_or_not.format('Ruby-lang'))).strip()
             action(titles,ruby)
 
-            if (git[0].upper() == 'Y' and ruby[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or ruby[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -2948,7 +2872,7 @@ def xxeinjector(titles):
         else:
             paths = the_path(titles,'XXEinjector')
             print(titles.installing.format('XXEinjector'))
-            system("cd {} && git clone https://github.com/enjoiz/XXEinjector".format(paths))
+            system(f"cd {paths} && git clone https://github.com/enjoiz/XXEinjector")
 
         print(titles.done.format('XXEinjector'))
         print(titles.note_tools.format('XXEinjector','ruby XXEinjector.rb'))
@@ -2975,7 +2899,7 @@ def badmod(titles):
             elif path.exists('/usr/bin/pacman') == True:
                 system("sudo pacman -S php curl")
 
-            system("cd {} && sudo git clone https://github.com/MrSqar-Ye/BadMod".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/MrSqar-Ye/BadMod")
             print(titles.done.format('BadMod'))
             print(titles.note_tools.format('BadMod','sudo php BadMod.php'))
 
@@ -2992,25 +2916,24 @@ def roxysploit(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_tools)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_tools)
+            paths = the_path(titles,'roxysploit')
+            print(titles.installing.format('roxysploit'))
+
+            if path.exists('/usr/bin/pacman') == True:
+                system("""cd {} && sudo git clone https://github.com/andyvaikunth/roxysploit && sudo pacman -S android-tools
+                    sudo pip2 install logging impacket pysmb threading socket socks zipfile shutil io struct re optparse binascii base64 urllib2 urllib requests commands paramiko scapy whois rlcompleter readline terminaltables platform""".format(paths))
+                print(titles.done.format('roxysploit'))
+                print(titles.note_tools.format('roxysploit','sudo python2 roxy.py'))
 
             else:
-                paths = the_path(titles,'roxysploit')
-                print(titles.installing.format('roxysploit'))
-
-                if path.exists('/usr/bin/pacman') == True:
-                    system("""cd {} && sudo git clone https://github.com/andyvaikunth/roxysploit && sudo pacman -S android-tools
-                    sudo pip2 install logging impacket pysmb threading socket socks zipfile shutil io struct re optparse binascii base64 urllib2 urllib requests commands paramiko scapy whois rlcompleter readline terminaltables platform""".format(paths))
-                    print(titles.done.format('roxysploit'))
-                    print(titles.note_tools.format('roxysploit','sudo python2 roxy.py'))
-
-                else:
-                    system("""cd {} && sudo git clone https://github.com/andyvaikunth/roxysploit
+                system("""cd {} && sudo git clone https://github.com/andyvaikunth/roxysploit
                     cd roxwpsploitysploit && sudo bash install""".format(paths))
-                    print(titles.done.format('roxysploit'))
-                    print(titles.note_tools2.format('roxyspoit','sudo rsfc'))
+                print(titles.done.format('roxysploit'))
+                print(titles.note_tools2.format('roxyspoit','sudo rsfc'))
 
         print(titles.readmore.format('roxysploit','http://bit.ly/2HodbHU'))
 
@@ -3028,10 +2951,7 @@ def lunar(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -3059,20 +2979,19 @@ def lunar(titles):
 
             print(titles.installing.format('Lunar'))
             system("""cd C:\\ && git clone https://github.com/Zucccs/Lunar
-            cd Lunar && .\\install.bat""")  
+            cd Lunar && .\\install.bat""")
             print(titles.done.format('Lunar'))
             print(titles.note_tools.format('Lunar','python main.py'))
 
+        elif (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Lunar')
+            print(titles.installing.format('Lunar'))
 
-            else:
-                paths = the_path(titles,'Lunar')
-                print(titles.installing.format('Lunar'))
-
-                if path.exists('/usr/bin/pacman') == True:
-                    system("""cd {} && sudo git clone https://github.com/Zucccs/Lunar/
+            if path.exists('/usr/bin/pacman') == True:
+                system("""cd {} && sudo git clone https://github.com/Zucccs/Lunar/
                     sudo pip2 install requests datetime subprocess colorama cryptography urllib2
                     sudo pacman -S wireshark-cli wireshark-qt
                     sudo git clone https://github.com/vanhauser-thc/thc-hydra
@@ -3081,12 +3000,12 @@ def lunar(titles):
                     cd hydra-gtk && sudo ./configure
                     sudo make && sudo make install""".format(paths))
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("""cd {} && sudo git clone https://github.com/Zucccs/Lunar
+            elif path.exists('/usr/bin/apt') == True:
+                system("""cd {} && sudo git clone https://github.com/Zucccs/Lunar
                     cd Lunar && sudo bash install.sh""".format(paths))
 
-                print(titles.done.format('Lunar'))
-                print(titles.note_tools.format('Lunar','python2 main.py'))
+            print(titles.done.format('Lunar'))
+            print(titles.note_tools.format('Lunar','python2 main.py'))
 
         print(titles.readmore.format('Lunar','http://bit.ly/2IEOTvp'))
 
@@ -3104,10 +3023,7 @@ def autordpwn(titles):
             powershell = str(input(titles.installed_or_not.format('PowerShell'))).strip()
             action(titles,powershell)
 
-            if (git.upper() == 'Y' and powershell.upper() == 'Y'):
-                pass
-
-            else:
+            if git.upper() != 'Y' or powershell.upper() != 'Y':
                 if git.upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -3187,7 +3103,7 @@ def rootos(titles):
         else:
             paths = the_path(titles,'rootOS')
             print(titles.installing.format('rootOS'))
-            system("cd {} && sudo git clone https://github.com/thehappydinoa/rootOS".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/thehappydinoa/rootOS")
             print(titles.done.format('rootOS'))
             print(titles.note_tools.format('rootOS','python2 rootos.py'))
 
@@ -3234,7 +3150,7 @@ def termineter(titles):
                 print(titles.note_python3)
                 system('.\\python-3.7.3.exe')
 
-            elif (python3.upper() == 'HELP' or python3.upper() == 'CHANGELOG' or python3.upper() == 'ABOUT'):
+            elif python3.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
                 termineter(titles)
 
             else:
@@ -3245,15 +3161,14 @@ def termineter(titles):
             system("pip install termineter")
             print(titles.done.format('Termineter'))
 
-        else:
-            if path.exists('/usr/bin/termineter') == True:
-                print(titles.installed.format('Termineter'))
+        elif path.exists('/usr/bin/termineter') == True:
+            print(titles.installed.format('Termineter'))
 
-            else:
-                print(titles.installing.format('Termineter'))
-                system("sudo pip3 install termineter")
-                print(titles.done.format('Termineter'))
-                
+        else:
+            print(titles.installing.format('Termineter'))
+            system("sudo pip3 install termineter")
+            print(titles.done.format('Termineter'))
+
         print(titles.note_tools2.format('Termineter','termineter','Terminal & CMD'))
         print(titles.readmore.format('Termineter','http://bit.ly/2m5btzY'))
 
@@ -3301,7 +3216,9 @@ def smod(titles):
         else:
             paths = the_path(titles,'smod')
             print(titles.installing.format('smod'))
-            system("""cd {} && sudo git clone https://github.com/Exploit-install/smod && sudo pip2 install scapy""".format(paths))
+            system(
+                f"""cd {paths} && sudo git clone https://github.com/Exploit-install/smod && sudo pip2 install scapy"""
+            )
             print(titles.done.format('smod'))
             print(titles.note_tools.format('smod','python2 smod.py'))
 
@@ -3322,13 +3239,12 @@ def thefatrat(titles):
             print(titles.done.format('TheFatRat'))
             print(titles.note_tools.format('TheFatRat','bash fatrat'))
 
-        else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-                print(titles.wsl)
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
+            print(titles.wsl)
 
-            else:
-                print(titles.run_well.format('Debian'))
+        else:
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('TheFatRat','http://bit.ly/2BDa6PV'))
 
@@ -3351,7 +3267,7 @@ def exploit_pack(titles):
                 download("https://sdlc-esd.oracle.com/ESD6/JSCDL/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jre-8u211-windows-i586-iftw.exe?GroupName=JSC&FilePath=/ESD6/JSCDL/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jre-8u211-windows-i586-iftw.exe&BHost=javadl.sun.com&File=jre-8u211-windows-i586-iftw.exe&AuthParam=1559705933_85bc6ea5c1eb928eabbe3a7733aca1df&ext=.exe")
                 system(".\\jre-8u211-windows-i586-iftw.exe")
 
-            elif (java.upper() == 'HELP' or java.upper() == 'CHANGELOG' or java.upper() == 'ABOUT'):
+            elif java.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
                 exploit_pack(titles)
 
             else:
@@ -3362,25 +3278,24 @@ def exploit_pack(titles):
             download('https://github.com/ExploitPackBinaries/ExploitPack/raw/master/exploitpack.zip')
             print(titles.note_exploit_pack)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Exploit Pack')
+            print(titles.installing.format('Exploit Pack'))
 
-            else:
-                paths = the_path(titles,'Exploit Pack')
-                print(titles.installing.format('Exploit Pack'))
-                
-                if path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -sS jdk-openjdk jre-openjdk ")
+            if path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -sS jdk-openjdk jre-openjdk ")
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("""sudo add-apt-repository ppa:linuxuprising/java
+            elif path.exists('/usr/bin/apt') == True:
+                system("""sudo add-apt-repository ppa:linuxuprising/java
                     sudo apt update && sudo apt install oracle-java11-installer""")
 
-                system("""cd {} && https://github.com/ExploitPackBinaries/ExploitPack/raw/master/exploitpack.zip
+            system("""cd {} && https://github.com/ExploitPackBinaries/ExploitPack/raw/master/exploitpack.zip
                 unzip exploitpack.zip -d exploitpack""".format(paths))
-                print(titles.done.format('Exploit Pack'))
-                print(titles.note_tools.format('Exploit Pack','sudo bash RunExploitPack.sh'))
+            print(titles.done.format('Exploit Pack'))
+            print(titles.note_tools.format('Exploit Pack','sudo bash RunExploitPack.sh'))
 
         print(titles.readmore.format('Exploit Pack','http://bit.ly/2KWeeOe'))
 
@@ -3398,10 +3313,7 @@ def mimikittenz(titles):
             powershell = str(input(titles.installed_or_not.format('PowerShell'))).strip()
             action(titles,powershell)
 
-            if (git[0].upper() == 'Y' and powershell[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or powershell[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -3445,17 +3357,16 @@ def ezsploit(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
-        else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
 
-            else:
-                paths = the_path(titles,'ezsploit')
-                print(titles.installing.format('ezsploit'))
-                metasploit(titles)
-                system("cd {} && sudo git clone https://github.com/rand0m1ze/ezsploit".format(paths))
-                print(titles.done.format('ezsploit'))
-                print(titles.note_tools.format('ezsploit','ezsploit.sh'))
+        else:
+            paths = the_path(titles,'ezsploit')
+            print(titles.installing.format('ezsploit'))
+            metasploit(titles)
+            system(f"cd {paths} && sudo git clone https://github.com/rand0m1ze/ezsploit")
+            print(titles.done.format('ezsploit'))
+            print(titles.note_tools.format('ezsploit','ezsploit.sh'))
 
         print(titles.readmore.format('ezsploit','http://bit.ly/2EO62B8'))
 
@@ -3473,7 +3384,9 @@ def auto_root_exploit(titles):
         else:
             paths = the_path(titles,'Auto-Exploit-Root')
             print(titles.installing.format('Auto-Exploit-Root'))
-            system("cd {} && sudo git clone https://github.com/nilotpalbiswas/Auto-Root-Exploit".format(paths))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/nilotpalbiswas/Auto-Root-Exploit"
+            )
             print(titles.done.format('Auto-Root-Exploit'))
             print(titles.note_tools.format('Auto-Root-Exploit','bash autoroot.sh'))
 
@@ -3498,7 +3411,7 @@ def ahmyth_android_rat(titles):
                 download("https://sdlc-esd.oracle.com/ESD6/JSCDL/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jre-8u211-windows-i586-iftw.exe?GroupName=JSC&FilePath=/ESD6/JSCDL/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jre-8u211-windows-i586-iftw.exe&BHost=javadl.sun.com&File=jre-8u211-windows-i586-iftw.exe&AuthParam=1559705933_85bc6ea5c1eb928eabbe3a7733aca1df&ext=.exe")
                 system(".\\jre-8u211-windows-i586-iftw.exe")
 
-            elif (java.upper() == 'HELP' or java.upper() == 'CHANGELOG' or java.upper() == 'ABOUT'):
+            elif java.upper() in {'HELP', 'CHANGELOG', 'ABOUT'}:
                 ahmyth_android_rat(titles)
 
             else:
@@ -3510,27 +3423,25 @@ def ahmyth_android_rat(titles):
             download('https://github.com/AhMyth/AhMyth-Android-RAT/releases/download/v1.0-beta.1/AhMyth_Win32.exe')
             system('.\\AhMyth_Win32.exe')
 
-        else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
 
-            else:
-                if path.exists('/usr/bin/pacman') == True:
-                    paths = the_path(titles,'AhMyth-Android-RAT')
-                    print(titles.installing.format('AhMyth-Android-RAT'))
-                    system("""sudo pacman -sS jdk-openjdk jre-openjdk electron
+        elif path.exists('/usr/bin/pacman') == True:
+            paths = the_path(titles,'AhMyth-Android-RAT')
+            print(titles.installing.format('AhMyth-Android-RAT'))
+            system("""sudo pacman -sS jdk-openjdk jre-openjdk electron
                     cd {} && sudo git clone https://github.com/AhMyth/AhMyth-Android-RAT""".format(paths))
-                    print(titles.done.format('AhMyth-Android-RAT'))
-                    print(titles.note_tools2.format('AhMyth-Android-RAT','sudo nmp start','AhMyth-Android-RAT/AhMyth-Server'))
+            print(titles.done.format('AhMyth-Android-RAT'))
+            print(titles.note_tools2.format('AhMyth-Android-RAT','sudo nmp start','AhMyth-Android-RAT/AhMyth-Server'))
 
 
-                elif path.exists('/usr/bin/apt') == True:
-                    print(titles.installing.format('AhMyth-Android-RAT'))
-                    system("""sudo add-apt-repository ppa:linuxuprising/java
+        elif path.exists('/usr/bin/apt') == True:
+            print(titles.installing.format('AhMyth-Android-RAT'))
+            system("""sudo add-apt-repository ppa:linuxuprising/java
                     sudo apt update && sudo apt install oracle-java11-installer""")
-                    system("wget https://github.com/AhMyth/AhMyth-Android-RAT/releases/download/v1.0-beta.1/AhMyth_linux32.deb && sudo dpkg -i AhMyth_linux32.deb")
-                    print(titles.done.format('AhMyth-Android-RAT'))
-                    print(titles.note_tools2.format('AhMyth-Android-RAT','sudo ahmyth','Terminal'))
+            system("wget https://github.com/AhMyth/AhMyth-Android-RAT/releases/download/v1.0-beta.1/AhMyth_linux32.deb && sudo dpkg -i AhMyth_linux32.deb")
+            print(titles.done.format('AhMyth-Android-RAT'))
+            print(titles.note_tools2.format('AhMyth-Android-RAT','sudo ahmyth','Terminal'))
 
         print(titles.readmore.format('AhMyth-Android-RAT','http://bit.ly/2YuBQAm'))
 
@@ -3548,10 +3459,7 @@ def exploit_framework(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -3583,8 +3491,10 @@ def exploit_framework(titles):
         else:
             paths = the_path(titles,'Exploit-Framework')
             print(titles.installing.format('Exploit-Framework'))
-            system("cd {} && sudo git clone https://github.com/WangYihang/Exploit-Framework".format(paths))
-            
+            system(
+                f"cd {paths} && sudo git clone https://github.com/WangYihang/Exploit-Framework"
+            )
+
         print(titles.done.format('Exploit-Framework'))
         print(titles.note_tools.format('Exploit-Framework', 'python2 framework.py'))
         print(titles.readmore.format('Exploit-Framework','http://bit.ly/2L0UEjN'))
@@ -3603,10 +3513,7 @@ def winroothelper(titles):
             powershell = str(input(titles.installed_or_not.format('PowerShell'))).strip()
             action(titles,powershell)
 
-            if (git[0].upper() == 'Y' and powershell[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or powershell[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -3654,27 +3561,26 @@ def metasploit(titles):
             print(titles.done.format('Metasploit Framework'))
             print(titles.note_tools.format('Metasploit Framework','"C:\\metasploit\\console.bat"','CMD'))
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            if path.exists('/usr/bin/msfconsole') == True:
+                print(titles.installed.format('Metasploit Framework'))
 
             else:
-                if path.exists('/usr/bin/msfconsole') == True:
-                    print(titles.installed.format('Metasploit Framework'))
+                print(titles.installing.format('Metasploit Framework'))
 
-                else:
-                    print(titles.installing.format('Metasploit Framework'))
+                if path.exists('/usr/bin/pacman') == True:
+                    system("sudo pacman -S metasploit")
 
-                    if path.exists('/usr/bin/pacman') == True:
-                        system("sudo pacman -S metasploit")
-
-                    elif path.exists('/usr/bin/apt') == True:
-                        system("""sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+                elif path.exists('/usr/bin/apt') == True:
+                    system("""sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
                         chmod 755 msfinstall && sudo ./msfinstall""")
-                        
-                    print(titles.done.format('Metasploit Framework'))
 
-                print(titles.note_tools.format('Metasploit Framework','sudo msfconsole','Terminal'))
+                print(titles.done.format('Metasploit Framework'))
+
+            print(titles.note_tools.format('Metasploit Framework','sudo msfconsole','Terminal'))
 
         print(titles.readmore.format('Metasploit Framework','http://bit.ly/2JkoOl9'))
 
@@ -3689,23 +3595,22 @@ def zerodoor(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'ZeroDoor')
+            print(titles.installing.format('ZeroDoor'))
 
-            else:
-                paths = the_path(titles,'ZeroDoor')
-                print(titles.installing.format('ZeroDoor'))
+            if path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S gcc && git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64-gcc && makepkg -si")
 
-                if path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S gcc && git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64-gcc && makepkg -si")
+            elif path.exists('/usr/bin/apt') == True:
+                system("sudo apt install gcc mingw-w64")
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install gcc mingw-w64")
-
-                system("cd {} && sudo git clone https://github.com/Souhardya/Zerodoor".format(paths))
-                print(titles.done.format('ZeroDoor'))
-                print(titles.note_tools.format('ZeroDoor','python2 zerodoor.py'))
+            system(f"cd {paths} && sudo git clone https://github.com/Souhardya/Zerodoor")
+            print(titles.done.format('ZeroDoor'))
+            print(titles.note_tools.format('ZeroDoor','python2 zerodoor.py'))
 
         print(titles.readmore.format('ZeroDoor','http://bit.ly/2LSjhnR'))
 
@@ -3720,17 +3625,18 @@ def terminator(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
-        else:
-            if (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
+            print(titles.unknow_distro)
 
-            else:
-                paths = the_path(titles,'Terminator')
-                print(titles.installing.format('Terminator'))
-                metasploit(titles)
-                system("cd {} && sudo git clone https://github.com/MohamedNourTN/Terminator".format(paths))
-                print(titles.done.format('Terminator'))
-                print(titles.note_tools.format('Terminator','python2 terminator.py'))
+        else:
+            paths = the_path(titles,'Terminator')
+            print(titles.installing.format('Terminator'))
+            metasploit(titles)
+            system(
+                f"cd {paths} && sudo git clone https://github.com/MohamedNourTN/Terminator"
+            )
+            print(titles.done.format('Terminator'))
+            print(titles.note_tools.format('Terminator','python2 terminator.py'))
 
         print(titles.readmore.format('Terminator','http://bit.ly/2vcD5If'))
 
@@ -3745,24 +3651,23 @@ def winpayloads(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'WinPayloads')
+            print(titles.installing.format('WinPayloads'))
+            metasploit(titles)
 
-            else:
-                paths = the_path(titles,'WinPayloads')
-                print(titles.installing.format('WinPayloads'))
-                metasploit(titles)
-
-                if path.exists('/usr/bin/pacman') == True:
-                    system("""sudo pacman -S wine python2-crypto unzip curl wget libwbclient
+            if path.exists('/usr/bin/pacman') == True:
+                system("""sudo pacman -S wine python2-crypto unzip curl wget libwbclient
                     sudo pip2 install requests netifaces blessed pyasn1
                     sudo pip2 install --force-reinstall prompt-toolkit==1.0.15""")
 
-                system("""cd {} && sudo git clone https://github.com/nccgroup/Winpayloads
+            system("""cd {} && sudo git clone https://github.com/nccgroup/Winpayloads
                 cd Winpayloads && sudo bash setup.sh""".format(paths))
-                print(titles.done.format('WinPayloads'))
-                print(titles.note_tools.format('WinPayloads','sudo python2 WinPayloads.py'))
+            print(titles.done.format('WinPayloads'))
+            print(titles.note_tools.format('WinPayloads','sudo python2 WinPayloads.py'))
 
         print(titles.readmore.format('WinPayloads','http://bit.ly/2MkvmT7'))
 
@@ -3777,26 +3682,25 @@ def saint(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'sAINT')
+            print(titles.installing.format('sAINT'))
 
-            else:
-                paths = the_path(titles,'sAINT')
-                print(titles.installing.format('sAINT'))
-
-                if path.exists('/usr/bin/apt') == True:
-                    system("""sudo add-apt-repository ppa:linuxuprising/java
+            if path.exists('/usr/bin/apt') == True:
+                system("""sudo add-apt-repository ppa:linuxuprising/java
                     sudo apt update && sudo apt install oracle-java8-installer
                     sudo apt install maven zlib1g-dev libncurses5-dev lib32z1 lib32ncurses6 -y""")
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("""sudo pacman -S jre8-openjdk jdk8-openjdk maven zlib ncurses lib32-ncurses""")
+            elif path.exists('/usr/bin/apt') == True:
+                system("""sudo pacman -S jre8-openjdk jdk8-openjdk maven zlib ncurses lib32-ncurses""")
 
-                system("""cd {} && sudo git clone https://github.com/tiagorlampert/sAINT
+            system("""cd {} && sudo git clone https://github.com/tiagorlampert/sAINT
                 cd sAINT && sudo bash configure.sh""".format(paths))
-                print(titles.done.format('sAINT'))
-                print(titles.note_tools.format('sAINT','java -jar sAINT.jar'))
+            print(titles.done.format('sAINT'))
+            print(titles.note_tools.format('sAINT','java -jar sAINT.jar'))
 
         print(titles.readmore.format('sAINT','http://bit.ly/2LPtpcV'))
 
@@ -3811,21 +3715,20 @@ def beelogger(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'BeeLogger')
+            print(titles.installing.format('BeeLogger'))
 
-            else:
-                paths = the_path(titles,'BeeLogger')
-                print(titles.installing.format('BeeLogger'))
+            if path.exists('/usr/bin/pacman') == True:
+                system("""sudo pacman -S wine""")
 
-                if path.exists('/usr/bin/pacman') == True:
-                    system("""sudo pacman -S wine""")
-
-                system("""cd {} && sudo git clone https://github.com/4w4k3/BeeLogger
+            system("""cd {} && sudo git clone https://github.com/4w4k3/BeeLogger
                 cd BeeLogger && sudo bash install.sh""".format(paths))
-                print(titles.done.formar('BeeLogger'))
-                print(titles.note_tools.format('BeeLogger','python2 bee.py'))
+            print(titles.done.formar('BeeLogger'))
+            print(titles.note_tools.format('BeeLogger','python2 bee.py'))
 
         print(titles.readmore.format('BeeLogger','http://bit.ly/2LqJyJF'))
 
@@ -3840,25 +3743,24 @@ def hacktheworld(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/pacman') == False and path.exists('/usr/bin/apt') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'HackTheWorld')
+            print(titles.installing.format('HackTheWorld'))
 
-            else:
-                paths = the_path(titles,'HackTheWorld')
-                print(titles.installing.format('HackTheWorld'))
-
-                if path.exists('/usr/bin/pacman') == True:
-                    system("""git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64 && makepkg -si
+            if path.exists('/usr/bin/pacman') == True:
+                system("""git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64 && makepkg -si
                     sudo pacman -S wine metasploit
                     cd {} && sudo git clone https://github.com/stormshadow07/HackTheWorld""".format(paths))
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("""cd {} && sudo git clone https://github.com/stormshadow07/HackTheWorld
+            elif path.exists('/usr/bin/apt') == True:
+                system("""cd {} && sudo git clone https://github.com/stormshadow07/HackTheWorld
                     cd HackTheWorld && sudo bash install.sh""".format(paths))
 
-                print(titles.done.format('HackTheWorld'))
-                print(titles.note_tools.format('HackTheWorld','python2 HackTheWorld.py'))
+            print(titles.done.format('HackTheWorld'))
+            print(titles.note_tools.format('HackTheWorld','python2 HackTheWorld.py'))
 
         print(titles.readmore.format('HackTheWorld','http://bit.ly/2JhzBfZ'))
 
@@ -3878,10 +3780,11 @@ def hatkey(titles):
             powershell = str(input(titles.installed_or_not.format('PowerShell'))).strip()
             action(titles,powershell)
 
-            if (git.upper() == 'Y' and python2.upper() == 'Y' and powershell.upper() == 'Y'):
-                pass
-
-            else:
+            if (
+                git.upper() != 'Y'
+                or python2.upper() != 'Y'
+                or powershell.upper() != 'Y'
+            ):
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -3914,29 +3817,28 @@ def hatkey(titles):
             print(titles.done.format('HatKey'))
             print(titles.note_tools.format('HatKey','python2 HatKey.py'))
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/dnf') == False and path.exists('/usr/bin/yum') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/dnf') == False and path.exists('/usr/bin/yum') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'HatKey')
+            print(titles.installing.format('HatKey'))
 
-            else:
-                paths = the_path(titles,'HatKey')
-                print(titles.installing.format('HatKey'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install powershell")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install powershell")
+            elif path.exists('/usr/bin/yum') == True:
+                system("sudo yum install powershell")
 
-                elif path.exists('/usr/bin/yum') == True:
-                    system("sudo yum install powershell")
+            elif path.exists('/usr/bin/dnf') == True:
+                system("sudo dnf install powershell")
 
-                elif path.exists('/usr/bin/dnf') == True:
-                    system("sudo dnf install powershell")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("git clone https://aur.archlinux.org/powershell.git && cd powershell && makepkg -si")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("git clone https://aur.archlinux.org/powershell.git && cd powershell && makepkg -si")
-
-                system("cd {} && sudo git clone https://github.com/Naayouu/Hatkey".format(paths))
-                print(titles.done.format('HatKey'))
-                print(titles.note_tools.format('HatKey','python2 HatKey.py'))
+            system(f"cd {paths} && sudo git clone https://github.com/Naayouu/Hatkey")
+            print(titles.done.format('HatKey'))
+            print(titles.note_tools.format('HatKey','python2 HatKey.py'))
 
         print(titles.readmore.format('HatKey','http://bit.ly/2HOZbDZ'))
 
@@ -3951,24 +3853,23 @@ def trolo(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == True and path.exists('/usr/bin/pacman') == True):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == True and path.exists('/usr/bin/pacman') == True):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'trolo')
+            print(titles.installing.format('trolo'))
+            metasploit(titles)
 
-            else:
-                paths = the_path(titles,'trolo')
-                print(titles.installing.format('trolo'))
-                metasploit(titles)
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install powershell")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install powershell")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("git clone https://aur.archlinux.org/powershell.git && cd powershell && makepkg -si")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("git clone https://aur.archlinux.org/powershell.git && cd powershell && makepkg -si")
-
-                system("cd {} && sudo git clone https://github.com/b3rito/trolo".format(paths))
-                print(titles.done.format('trolo'))
-                print(titles.note_tools.format('trolo','bash trolo.sh'))
+            system(f"cd {paths} && sudo git clone https://github.com/b3rito/trolo")
+            print(titles.done.format('trolo'))
+            print(titles.note_tools.format('trolo','bash trolo.sh'))
 
         print(titles.readmore.format('trolo','http://bit.ly/2Jj37Sj'))
 
@@ -3983,24 +3884,25 @@ def getwin(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == True and path.exists('/usr/bin/pacman') == True):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == True and path.exists('/usr/bin/pacman') == True):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'GetWin')
+            print(titles.installing.format('GetWin'))
 
-            else:
-                paths = the_path(titles,'GetWin')
-                print(titles.installing.format('GetWin'))
-
-                if path.exists('/usr/bin/pacman') == True:
-                    system("""sudo pacman -S netcat php libssh2 openssh
+            if path.exists('/usr/bin/pacman') == True:
+                system("""sudo pacman -S netcat php libssh2 openssh
                     git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64-gcc && makepkg -si""")
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install netcat php ssh mingw-w64")
+            elif path.exists('/usr/bin/apt') == True:
+                system("sudo apt install netcat php ssh mingw-w64")
 
-                system("cd {} && sudo git clone https://github.com/thelinuxchoice/getwin".format(paths))
-                print(titles.done.format('GetWin'))
-                print(titles.note_tools.format('GetWin','bash getwin.sh'))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/thelinuxchoice/getwin"
+            )
+            print(titles.done.format('GetWin'))
+            print(titles.note_tools.format('GetWin','bash getwin.sh'))
 
         print(titles.readmore.format('GetWin','http://bit.ly/2R0reH5'))
 
@@ -4015,23 +3917,24 @@ def dkmc(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == True and path.exists('/usr/bin/pacman') == True):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == True and path.exists('/usr/bin/pacman') == True):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'DKMC')
+            print(titles.installing.format('DKMC'))
 
-            else:
-                paths = the_path(titles,'DKMC')
-                print(titles.installing.format('DKMC'))
+            if path.exists('/usr/bin/apt') == True:
+                system("sudo apt install powershell")
 
-                if path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install powershell")
+            elif path.exists('/usr/bin/pacman') == True:
+                system("git clone https://aur.archlinux.org/powershell.git && cd powershell && makepkg -si")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("git clone https://aur.archlinux.org/powershell.git && cd powershell && makepkg -si")
-
-                system("cd {} && sudo git clone https://github.com/Mr-Un1k0d3r/DKMC && cd DKMC && sudo mkdir output".format(paths))
-                print(titles.done.format('DKMC'))
-                print(titles.note_tools.format('DKMC','python2 dkmc.py'))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/Mr-Un1k0d3r/DKMC && cd DKMC && sudo mkdir output"
+            )
+            print(titles.done.format('DKMC'))
+            print(titles.note_tools.format('DKMC','python2 dkmc.py'))
 
         print(titles.readmore.format('DKMC','http://bit.ly/2IybKpD'))
 
@@ -4049,10 +3952,7 @@ def parat(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git.upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -4084,7 +3984,7 @@ def parat(titles):
         else:
             paths = the_path(titles,'Parat')
             print(titles.installing.format('Parat'))
-            system("cd {} && sudo git clone https://github.com/fadinglr/Parat".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/fadinglr/Parat")
 
         print(titles.done.format('Parat'))
         print(titles.note_tools.format('Parat','python2 main.py'))
@@ -4101,17 +4001,16 @@ def mkvenom(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
-        else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
 
-            else:
-                paths = the_path(titles,'mkvenom')
-                print(titles.installing.format('mkvenom'))
-                metasploit(titles)
-                system("cd {} && sudo git clone https://github.com/phraxoid/mkvenom".format(paths))
-                print(titles.done.format('mkvenom'))
-                print(titles.note_tools.format('mkvenom','bash mkvenom.sh'))
+        else:
+            paths = the_path(titles,'mkvenom')
+            print(titles.installing.format('mkvenom'))
+            metasploit(titles)
+            system(f"cd {paths} && sudo git clone https://github.com/phraxoid/mkvenom")
+            print(titles.done.format('mkvenom'))
+            print(titles.note_tools.format('mkvenom','bash mkvenom.sh'))
 
         print(titles.readmore.format('mkvenom','http://bit.ly/2MoYrg5'))
 
@@ -4126,27 +4025,26 @@ def venom(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'venom')
+            print(titles.installing.format('venom'))
+            metasploit(titles)
 
-            else:
-                paths = the_path(titles,'venom')
-                print(titles.installing.format('venom'))
-                metasploit(titles)
-
-                if path.exists('/usr/bin/apt') == True:
-                    system("""sudo apt install wine gcc mingw32
+            if path.exists('/usr/bin/apt') == True:
+                system("""sudo apt install wine gcc mingw32
                     git clone https://gitlab.com/kalilinux/packages/shellter && cd shellter/debian && sudo bash install""")
 
-                elif path.exists('/usr/bin/pacman') == True:
-                    system("""wget https://raw.githubusercontent.com/BlackArch/blackarch/37ad245e9b30abfc7fcc7e636c1df3675b134dee/packages/shellter/PKGBUILD && makepkg -si
+            elif path.exists('/usr/bin/pacman') == True:
+                system("""wget https://raw.githubusercontent.com/BlackArch/blackarch/37ad245e9b30abfc7fcc7e636c1df3675b134dee/packages/shellter/PKGBUILD && makepkg -si
                     git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64-gcc && makepkg -si
                     sudo pacman -S wine gcc""")
 
-                system("cd {} && sudo git clone https://github.com/r00t-3xp10it/venom".format(paths))
-                print(titles.done.format('venom'))
-                print(titles.note_tools.format('venom','sudo bash venom.sh'))
+            system(f"cd {paths} && sudo git clone https://github.com/r00t-3xp10it/venom")
+            print(titles.done.format('venom'))
+            print(titles.note_tools.format('venom','sudo bash venom.sh'))
 
         print(titles.readmore.format('venom','http://bit.ly/2MVHTc0'))
 
@@ -4161,16 +4059,15 @@ def cloak(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
-        else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
 
-            else:
-                paths = the_path(titles,'Cloak')
-                metasploit(titles)
-                system("cd {} && sudo git clone https://github.com/s0md3v/Cloak".format(paths))
-                print(titles.done.format('Cloak'))
-                print(titles.note_tools.format('Cloak','python3 cloak.py'))
+        else:
+            paths = the_path(titles,'Cloak')
+            metasploit(titles)
+            system(f"cd {paths} && sudo git clone https://github.com/s0md3v/Cloak")
+            print(titles.done.format('Cloak'))
+            print(titles.note_tools.format('Cloak','python3 cloak.py'))
 
         print(titles.readmore.format('Cloak','http://bit.ly/2OQ2tLb'))
 
@@ -4185,24 +4082,25 @@ def avoid(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'Metasploit AV Evasion')
+            print(titles.installing.format('Metasploit AV Evasion'))
+            metasploit(titles)
 
-            else:
-                paths = the_path(titles,'Metasploit AV Evasion')
-                print(titles.installing.format('Metasploit AV Evasion'))
-                metasploit(titles)
+            if path.exists('/usr/bin/pacman') == True:
+                system("sudo pacman -S gcc && git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64-gcc && makepkg -si")
 
-                if path.exists('/usr/bin/pacman') == True:
-                    system("sudo pacman -S gcc && git clone https://aur.archlinux.org/mingw-w64-gcc.git && cd mingw-w64-gcc && makepkg -si")
+            elif path.exists('/usr/bin/apt') == True:
+                system("sudo apt install gcc mingw-w64")
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("sudo apt install gcc mingw-w64")
-
-                system("cd {} && sudo git clone https://github.com/nccgroup/metasploitavevasion".format(paths))
-                print(titles.done.format('Metasploit AV Evasion'))
-                print(titles.note_tools.format('Metasploit AV Evasion','bash avoid.sh'))
+            system(
+                f"cd {paths} && sudo git clone https://github.com/nccgroup/metasploitavevasion"
+            )
+            print(titles.done.format('Metasploit AV Evasion'))
+            print(titles.note_tools.format('Metasploit AV Evasion','bash avoid.sh'))
 
         print(titles.readmore.format('Metasploit AV Evasion','http://bit.ly/2Kn3Q1p'))
 
@@ -4217,26 +4115,25 @@ def avet(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
+            print(titles.unknow_distro)
+
         else:
-            if (path.exists('/usr/bin/apt') == False and path.exists('/usr/bin/pacman') == False):
-                print(titles.unknow_distro)
+            paths = the_path(titles,'AVET')
+            print(titles.installing.format('AVET'))
+            metasploit(titles)
 
-            else:
-                paths = the_path(titles,'AVET')
-                print(titles.installing.format('AVET'))
-                metasploit(titles)
-
-                if path.exists('/usr/bin/pacman') == True:
-                    system("""sudo pacman -S gcc wine && wget https://downloads.sourceforge.net/project/tdm-gcc/TDM-GCC%20Installer/tdm64-gcc-5.1.0-2.exe
+            if path.exists('/usr/bin/pacman') == True:
+                system("""sudo pacman -S gcc wine && wget https://downloads.sourceforge.net/project/tdm-gcc/TDM-GCC%20Installer/tdm64-gcc-5.1.0-2.exe
                     sudo wine tdm64-gcc-5.1.0-2.exe && sudo rm tdm64-gcc-5.1.0-2.exe
                     cd {} && sudo git clone https://github.com/govolution/avet""".format(paths))
 
-                elif path.exists('/usr/bin/apt') == True:
-                    system("""cd {} && sudo git clone https://github.com/govolution/avet
+            elif path.exists('/usr/bin/apt') == True:
+                system("""cd {} && sudo git clone https://github.com/govolution/avet
                     cd avet && sudo bash setup.sh""".format(paths))
 
-                print(titles.done.format('AVET'))
-                print(titles.note_tools.format('AVET','python3 avet_fabric.py'))
+            print(titles.done.format('AVET'))
+            print(titles.note_tools.format('AVET','python3 avet_fabric.py'))
 
         print(titles.readmore.format('AVET','http://bit.ly/2TltIE3'))
 
@@ -4254,10 +4151,7 @@ def nxcrypt(titles):
             python2 = str(input(titles.installed_or_not.format('Python 2.7'))).strip()
             action(titles,python2)
 
-            if (git[0].upper() == 'Y' and python2[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python2[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
@@ -4289,7 +4183,7 @@ def nxcrypt(titles):
         else:
             paths = the_path(titles,'NXcrypt')
             print(titles.installing.format('NXcrypt'))
-            system("cd {} && sudo git clone https://github.com/Hadi999/NXcrypt".format(paths))
+            system(f"cd {paths} && sudo git clone https://github.com/Hadi999/NXcrypt")
 
         print(titles.done.format('NXcrypt'))
         print(titles.note_tools.format('NXcrypt','python2 nxcrypt.py'))
@@ -4309,14 +4203,14 @@ def slowloris(titles):
 
             if python3[0].upper() == 'Y':
                 pass
-                    
+
             elif python3[0].upper() == 'N':
                 print(titles.downloading.format('python-3.7.3.exe'))
                 download('https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe')
                 print(titles.note_python3)
                 system('.\\python-3.7.3.exe')
 
-            elif (python3.upper() == 'HELP' or python3.upper() == 'ABOUT' or python3.upper() == 'CHANGELOG'):
+            elif python3.upper() in {'HELP', 'ABOUT', 'CHANGELOG'}:
                 slowloris(titles)
 
             else:
@@ -4349,13 +4243,12 @@ def zambie(titles):
             print(titles.done.format('ZAmbIE'))
             print(titles.note_tools.format('ZAmbIE','python zambie.py'))
 
-        else:
-            if name == 'nt':
-                print(titles.doesnt_support_windows)
-                print(titles.wsl)
+        elif name == 'nt':
+            print(titles.doesnt_support_windows)
+            print(titles.wsl)
 
-            else:
-                print(titles.run_well.format('Debian'))
+        else:
+            print(titles.run_well.format('Debian'))
 
         print(titles.readmore.format('ZAmbIE','http://bit.ly/2JymfeZ'))
 
@@ -4394,16 +4287,13 @@ def memcrashed(titles):
             python3 = str(input(titles.installed_or_not.format('Python 3.7'))).strip()
             action(titles,python3)
 
-            if (git[0].upper() == 'Y' and python3[0].upper() == 'Y'):
-                pass
-
-            else:
+            if git[0].upper() != 'Y' or python3[0].upper() != 'Y':
                 if git[0].upper() == 'N':
                     print(titles.downloading.format('Git-2.21.0-32-bit.exe'))
                     download('https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-32-bit.exe')
                     print(titles.note_git)
                     system('.\\Git-2.21.0-32-bit.exe')
-                    
+
                 elif python3[0].upper() == 'N':
                     print(titles.downloading.format('python-3.7.3.exe'))
                     download('https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe')
@@ -4448,25 +4338,24 @@ def fsociety(titles):
             print(titles.doesnt_support_windows)
             print(titles.wsl)
 
+        elif path.exists('/usr/bin/pacman') == True:
+            paths = the_path(titles,'Fsociety')
+            print(titles.installing.format)
+            system(f"cd {paths} && sudo git clone https://github.com/Manisso/fsociety")
+            print(titles.done.format('Fsociety'))
+            print(titles.note_tools.format('Fsociety','python2 fsociety.py'))
+
         else:
-            if path.exists('/usr/bin/pacman') == True:
-                paths = the_path(titles,'Fsociety')
-                print(titles.installing.format)
-                system("cd {} && sudo git clone https://github.com/Manisso/fsociety".format(paths))
-                print(titles.done.format('Fsociety'))
-                print(titles.note_tools.format('Fsociety','python2 fsociety.py'))
+            if path.exists('/usr/local/bin/fsociety') == True:
+                print(titles.installed.format('Fsociety'))
 
             else:
-                if path.exists('/usr/local/bin/fsociety') == True:
-                    print(titles.installed.format('Fsociety'))
+                paths = the_path(titles,'Fsociety')
+                print(titles.installing.format)
+                system(f"cd {paths} && sudo git clone https://github.com/Manisso/fsociety")
+                print(titles.done.format('Fsociety'))
 
-                else:
-                    paths = the_path(titles,'Fsociety')
-                    print(titles.installing.format)
-                    system("cd {} && sudo git clone https://github.com/Manisso/fsociety".format(paths))
-                    print(titles.done.format('Fsociety'))
-                    
-                print(titles.note_tools2.format('Fsociety','fsociety','Terminal'))
+            print(titles.note_tools2.format('Fsociety','fsociety','Terminal'))
 
         print(titles.readmore.format('Fsociety','http://bit.ly/2mJIRwi'))
 
